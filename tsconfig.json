@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": "./",
+    "paths": {
+      "@src/*": ["src/*"],
+    },
+    "strict": true,
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true, // import React from 'react'と書ける。
+  }
+}
