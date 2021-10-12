@@ -1,1 +1,5 @@
-export const sizes = {};
+export const sizes = {
+  fontSizes: {
+    body: 16,
+  },
+};
