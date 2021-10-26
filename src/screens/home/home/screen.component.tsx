@@ -1,5 +1,7 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import styled from 'styled-components/native';
+import {useTranslation} from 'react-i18next';
+import {Button} from 'react-native';
 // import AppleHealthKit, {
 //   HealthValue,
 //   HealthKitPermissions,
@@ -35,9 +37,25 @@ import styled from 'styled-components/native';
 // });
 
 const ScreenComponent: FC = () => {
+  const {t, i18n} = useTranslation();
+
+  const [lang, setLang] = useState<'ja' | 'en'>('ja');
+
+  const onChangeLang = () => {
+    if (lang === 'ja') {
+      i18n.changeLanguage('en');
+      setLang('en');
+    } else {
+      i18n.changeLanguage('ja');
+      setLang('ja');
+    }
+  };
+
   return (
     <Wrapper>
       <TestText>test success!</TestText>
+      <TestText>{t('hello')}</TestText>
+      <Button onPress={onChangeLang} title="change language" />
     </Wrapper>
   );
 };
