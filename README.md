@@ -17,3 +17,17 @@ cd ..
 yarn start
 react-native run-ios
 ```
+
+## 立ち上がらない時
+
+色々消す
+```sh
+rm -rf node_modules
+rm -rf build
+rm -rf ios/build
+```
+
+再度入れ直す
+```sh
+yarn cache clean && yarn
+```
