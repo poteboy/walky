@@ -38,25 +38,9 @@ AppleHealthKit.initHealthKit(permissions, (error: string) => {
 });
 
 const ScreenComponent: FC = () => {
-  const {t, i18n} = useTranslation();
-
-  const [lang, setLang] = useState<'ja' | 'en'>('ja');
-
-  const onChangeLang = () => {
-    if (lang === 'ja') {
-      i18n.changeLanguage('en');
-      setLang('en');
-    } else {
-      i18n.changeLanguage('ja');
-      setLang('ja');
-    }
-  };
-
   return (
     <Wrapper>
       <TestText>test success!</TestText>
-      <TestText>{t('hello')}</TestText>
-      <Button onPress={onChangeLang} title="change language" />
     </Wrapper>
   );
 };

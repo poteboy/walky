@@ -6,9 +6,11 @@ import MapTest from '@src/components/MapTest';
 
 const Tab = createBottomTabNavigator();
 
-export const AppNavigator = () => {
+export const AppTab = () => {
   return (
-    <Tab.Navigator initialRouteName={route.HOME}>
+    <Tab.Navigator
+      initialRouteName={route.HOME}
+      screenOptions={{headerShown: false}}>
       <Tab.Screen name={route.HOME} component={HomeNavigator} />
       <Tab.Screen name={route.MAP} component={MapTest} />
     </Tab.Navigator>
