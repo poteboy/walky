@@ -58,3 +58,6 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
+/ios/Pedometer/AppDelegate.m
+*.m

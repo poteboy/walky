@@ -3,6 +3,7 @@
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -42,6 +43,8 @@ static void InitializeFlipper(UIApplication *application) {
       rootView.backgroundColor = [UIColor whiteColor];
   }
 
+
+  [GMSServices provideAPIKey:@"AIzaSyDY-_tiMe8BdSy6V47zM3SYWqHPb6-2GTc"];
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;
