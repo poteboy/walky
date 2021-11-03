@@ -12,7 +12,7 @@ target 'Pedometer' do
     hermes_enabled: false
   )
 
-  pod 'RNAppleHealthKit', :path => '../node_modules/react-native-health'
+  pod 'RNAppleHealthKit', path: '../node_modules/react-native-health'
 
   target 'PedometerTests' do
     inherit! :complete

@@ -2,39 +2,40 @@ import React, {FC, useState} from 'react';
 import styled from 'styled-components/native';
 import {useTranslation} from 'react-i18next';
 import {Button} from 'react-native';
-// import AppleHealthKit, {
-//   HealthValue,
-//   HealthKitPermissions,
-// } from 'react-native-health';
+import AppleHealthKit, {
+  HealthValue,
+  HealthKitPermissions,
+} from 'react-native-health';
 
-// /* Permission options */
-// const permissions = {
-//   permissions: {
-//     read: [AppleHealthKit.Constants.Permissions.HeartRate],
-//     write: [AppleHealthKit.Constants.Permissions.Steps],
-//   },
-// } as HealthKitPermissions;
+/* Permission options */
+const permissions = {
+  permissions: {
+    read: [AppleHealthKit.Constants.Permissions.Steps],
+  },
+} as HealthKitPermissions;
 
-// AppleHealthKit.initHealthKit(permissions, (error: string) => {
-//   /* Called after we receive a response from the system */
+AppleHealthKit.initHealthKit(permissions, (error: string) => {
+  /* Called after we receive a response from the system */
 
-//   if (error) {
-//     console.log('[ERROR] Cannot grant permissions!');
-//   }
+  if (error) {
+    console.log('[ERROR] Cannot grant permissions!');
+  }
 
-//   /* Can now read or write to HealthKit */
+  /* Can now read or write to HealthKit */
 
-//   const options = {
-//     startDate: new Date(2020, 1, 1).toISOString(),
-//   };
+  const options = {
+    startDate: new Date(2020, 1, 1).toISOString(),
+  };
 
-//   AppleHealthKit.getHeartRateSamples(
-//     options,
-//     (callbackError: string, results: HealthValue[]) => {
-//       /* Samples are now collected from HealthKit */
-//     },
-//   );
-// });
+  AppleHealthKit.getHeartRateSamples(
+    options,
+    (callbackError: string, results: HealthValue[]) => {
+      /* Samples are now collected from HealthKit */
+
+      console.log(callbackError, results);
+    },
+  );
+});
 
 const ScreenComponent: FC = () => {
   const {t, i18n} = useTranslation();
