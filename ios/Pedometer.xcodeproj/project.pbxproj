@@ -13,6 +13,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		6E89334DDD811171A9BAD474 /* libPods-Pedometer-PedometerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2049BAC169ACE49EE70753D4 /* libPods-Pedometer-PedometerTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		8A6E683427327B4100E2E7F8 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6E683327327B4100E2E7F8 /* HealthKit.framework */; };
 		D017902A8D6B4D7B9D05F368 /* libPods-Pedometer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C330E760ABCD1A59FCBDEE2E /* libPods-Pedometer.a */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,8 @@
 		21FE481FE6319E17C74051EC /* Pods-Pedometer-PedometerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pedometer-PedometerTests.release.xcconfig"; path = "Target Support Files/Pods-Pedometer-PedometerTests/Pods-Pedometer-PedometerTests.release.xcconfig"; sourceTree = "<group>"; };
 		62B2BBAB1B18C4DE2388AB50 /* Pods-Pedometer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pedometer.release.xcconfig"; path = "Target Support Files/Pods-Pedometer/Pods-Pedometer.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Pedometer/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8A6E683227327B4100E2E7F8 /* Pedometer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Pedometer.entitlements; path = Pedometer/Pedometer.entitlements; sourceTree = "<group>"; };
+		8A6E683327327B4100E2E7F8 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		C330E760ABCD1A59FCBDEE2E /* libPods-Pedometer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Pedometer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D566B5727FC1A467DA3DD374 /* Pods-Pedometer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pedometer.debug.xcconfig"; path = "Target Support Files/Pods-Pedometer/Pods-Pedometer.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -60,6 +63,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D017902A8D6B4D7B9D05F368 /* libPods-Pedometer.a in Frameworks */,
+				8A6E683427327B4100E2E7F8 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +90,7 @@
 		13B07FAE1A68108700A75B9A /* Pedometer */ = {
 			isa = PBXGroup;
 			children = (
+				8A6E683227327B4100E2E7F8 /* Pedometer.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -99,6 +104,7 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A6E683327327B4100E2E7F8 /* HealthKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				C330E760ABCD1A59FCBDEE2E /* libPods-Pedometer.a */,
 				2049BAC169ACE49EE70753D4 /* libPods-Pedometer-PedometerTests.a */,
@@ -145,7 +151,6 @@
 				FA485F5E29023F8CB8E0F5E8 /* Pods-Pedometer-PedometerTests.debug.xcconfig */,
 				21FE481FE6319E17C74051EC /* Pods-Pedometer-PedometerTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -432,6 +437,8 @@
 			baseConfigurationReference = FA485F5E29023F8CB8E0F5E8 /* Pods-Pedometer-PedometerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				DEVELOPMENT_TEAM = SNN4X72TFK;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -459,6 +466,7 @@
 			baseConfigurationReference = 21FE481FE6319E17C74051EC /* Pods-Pedometer-PedometerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = PedometerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -484,7 +492,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Pedometer/Pedometer.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SNN4X72TFK;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Pedometer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -496,7 +506,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.poteboy.walky;
 				PRODUCT_NAME = Pedometer;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -510,7 +520,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Pedometer/Pedometer.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SNN4X72TFK;
 				INFOPLIST_FILE = Pedometer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -521,7 +533,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.poteboy.walky;
 				PRODUCT_NAME = Pedometer;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -577,7 +589,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
@@ -636,7 +648,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					/usr/lib/swift,
 					"$(inherited)",
