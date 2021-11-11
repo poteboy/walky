@@ -6,6 +6,8 @@ import AppleHealthKit, {
   HealthValue,
   HealthKitPermissions,
 } from 'react-native-health';
+import {useContainer} from 'unstated-next';
+import {UserContainer} from '@src/containers';
 
 /* Permission options */
 const permissions = {
@@ -38,6 +40,10 @@ AppleHealthKit.initHealthKit(permissions, (error: string) => {
 });
 
 const ScreenComponent: FC = () => {
+  const {user$} = useContainer(UserContainer);
+
+  console.log(user$);
+
   return (
     <Wrapper>
       <TestText>test success!</TestText>
