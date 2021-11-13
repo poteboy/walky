@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* PedometerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PedometerTests.m */; };
+		00E356F31AD99517003FC87E /* walkyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* walkyTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		6E89334DDD811171A9BAD474 /* libPods-Pedometer-PedometerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2049BAC169ACE49EE70753D4 /* libPods-Pedometer-PedometerTests.a */; };
+		6E89334DDD811171A9BAD474 /* libPods-walky-walkyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2049BAC169ACE49EE70753D4 /* libPods-walky-walkyTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		87ECDD7B2737EE0F00E48CBE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 87ECDD7A2737EE0F00E48CBE /* GoogleService-Info.plist */; };
 		8A6E683427327B4100E2E7F8 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6E683327327B4100E2E7F8 /* HealthKit.framework */; };
-		D017902A8D6B4D7B9D05F368 /* libPods-Pedometer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C330E760ABCD1A59FCBDEE2E /* libPods-Pedometer.a */; };
+		D017902A8D6B4D7B9D05F368 /* libPods-walky.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C330E760ABCD1A59FCBDEE2E /* libPods-walky.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,31 +24,31 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = Pedometer;
+			remoteInfo = walky;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00E356EE1AD99517003FC87E /* PedometerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PedometerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* walkyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = walkyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* PedometerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PedometerTests.m; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* Pedometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pedometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Pedometer/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Pedometer/AppDelegate.m; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pedometer/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Pedometer/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Pedometer/main.m; sourceTree = "<group>"; };
-		2049BAC169ACE49EE70753D4 /* libPods-Pedometer-PedometerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Pedometer-PedometerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		21FE481FE6319E17C74051EC /* Pods-Pedometer-PedometerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pedometer-PedometerTests.release.xcconfig"; path = "Target Support Files/Pods-Pedometer-PedometerTests/Pods-Pedometer-PedometerTests.release.xcconfig"; sourceTree = "<group>"; };
-		62B2BBAB1B18C4DE2388AB50 /* Pods-Pedometer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pedometer.release.xcconfig"; path = "Target Support Files/Pods-Pedometer/Pods-Pedometer.release.xcconfig"; sourceTree = "<group>"; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Pedometer/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* walkyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = walkyTests.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* walky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = walky.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = walky/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = walky/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = walky/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = walky/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = walky/main.m; sourceTree = "<group>"; };
+		2049BAC169ACE49EE70753D4 /* libPods-walky-walkyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-walky-walkyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		21FE481FE6319E17C74051EC /* Pods-walky-walkyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walky-walkyTests.release.xcconfig"; path = "Target Support Files/Pods-walky-walkyTests/Pods-walky-walkyTests.release.xcconfig"; sourceTree = "<group>"; };
+		62B2BBAB1B18C4DE2388AB50 /* Pods-walky.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walky.release.xcconfig"; path = "Target Support Files/Pods-walky/Pods-walky.release.xcconfig"; sourceTree = "<group>"; };
+		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = walky/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87ECDD7A2737EE0F00E48CBE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		8A6E683227327B4100E2E7F8 /* Pedometer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Pedometer.entitlements; path = Pedometer/Pedometer.entitlements; sourceTree = "<group>"; };
+		8A6E683227327B4100E2E7F8 /* walky.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = walky.entitlements; path = walky/walky.entitlements; sourceTree = "<group>"; };
 		8A6E683327327B4100E2E7F8 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		C330E760ABCD1A59FCBDEE2E /* libPods-Pedometer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Pedometer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D566B5727FC1A467DA3DD374 /* Pods-Pedometer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pedometer.debug.xcconfig"; path = "Target Support Files/Pods-Pedometer/Pods-Pedometer.debug.xcconfig"; sourceTree = "<group>"; };
+		C330E760ABCD1A59FCBDEE2E /* libPods-walky.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-walky.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D566B5727FC1A467DA3DD374 /* Pods-walky.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walky.debug.xcconfig"; path = "Target Support Files/Pods-walky/Pods-walky.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		FA485F5E29023F8CB8E0F5E8 /* Pods-Pedometer-PedometerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pedometer-PedometerTests.debug.xcconfig"; path = "Target Support Files/Pods-Pedometer-PedometerTests/Pods-Pedometer-PedometerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FA485F5E29023F8CB8E0F5E8 /* Pods-walky-walkyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-walky-walkyTests.debug.xcconfig"; path = "Target Support Files/Pods-walky-walkyTests/Pods-walky-walkyTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E89334DDD811171A9BAD474 /* libPods-Pedometer-PedometerTests.a in Frameworks */,
+				6E89334DDD811171A9BAD474 /* libPods-walky-walkyTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,7 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D017902A8D6B4D7B9D05F368 /* libPods-Pedometer.a in Frameworks */,
+				D017902A8D6B4D7B9D05F368 /* libPods-walky.a in Frameworks */,
 				8A6E683427327B4100E2E7F8 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,13 +72,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* PedometerTests */ = {
+		00E356EF1AD99517003FC87E /* walkyTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* PedometerTests.m */,
+				00E356F21AD99517003FC87E /* walkyTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = PedometerTests;
+			path = walkyTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -89,10 +89,10 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* Pedometer */ = {
+		13B07FAE1A68108700A75B9A /* walky */ = {
 			isa = PBXGroup;
 			children = (
-				8A6E683227327B4100E2E7F8 /* Pedometer.entitlements */,
+				8A6E683227327B4100E2E7F8 /* walky.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -100,7 +100,7 @@
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = Pedometer;
+			name = walky;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -108,8 +108,8 @@
 			children = (
 				8A6E683327327B4100E2E7F8 /* HealthKit.framework */,
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				C330E760ABCD1A59FCBDEE2E /* libPods-Pedometer.a */,
-				2049BAC169ACE49EE70753D4 /* libPods-Pedometer-PedometerTests.a */,
+				C330E760ABCD1A59FCBDEE2E /* libPods-walky.a */,
+				2049BAC169ACE49EE70753D4 /* libPods-walky-walkyTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -125,9 +125,9 @@
 			isa = PBXGroup;
 			children = (
 				87ECDD7A2737EE0F00E48CBE /* GoogleService-Info.plist */,
-				13B07FAE1A68108700A75B9A /* Pedometer */,
+				13B07FAE1A68108700A75B9A /* walky */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* PedometerTests */,
+				00E356EF1AD99517003FC87E /* walkyTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				C8320F65EDEDA6B0A73595B4 /* Pods */,
@@ -140,8 +140,8 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* Pedometer.app */,
-				00E356EE1AD99517003FC87E /* PedometerTests.xctest */,
+				13B07F961A680F5B00A75B9A /* walky.app */,
+				00E356EE1AD99517003FC87E /* walkyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,10 +149,10 @@
 		C8320F65EDEDA6B0A73595B4 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D566B5727FC1A467DA3DD374 /* Pods-Pedometer.debug.xcconfig */,
-				62B2BBAB1B18C4DE2388AB50 /* Pods-Pedometer.release.xcconfig */,
-				FA485F5E29023F8CB8E0F5E8 /* Pods-Pedometer-PedometerTests.debug.xcconfig */,
-				21FE481FE6319E17C74051EC /* Pods-Pedometer-PedometerTests.release.xcconfig */,
+				D566B5727FC1A467DA3DD374 /* Pods-walky.debug.xcconfig */,
+				62B2BBAB1B18C4DE2388AB50 /* Pods-walky.release.xcconfig */,
+				FA485F5E29023F8CB8E0F5E8 /* Pods-walky-walkyTests.debug.xcconfig */,
+				21FE481FE6319E17C74051EC /* Pods-walky-walkyTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -160,9 +160,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* PedometerTests */ = {
+		00E356ED1AD99517003FC87E /* walkyTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "PedometerTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "walkyTests" */;
 			buildPhases = (
 				F25CCCEBAE1D7E8147A23434 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -176,14 +176,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = PedometerTests;
-			productName = PedometerTests;
-			productReference = 00E356EE1AD99517003FC87E /* PedometerTests.xctest */;
+			name = walkyTests;
+			productName = walkyTests;
+			productReference = 00E356EE1AD99517003FC87E /* walkyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* Pedometer */ = {
+		13B07F861A680F5B00A75B9A /* walky */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Pedometer" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "walky" */;
 			buildPhases = (
 				EAC1C1346CDE355C2EE70FC3 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -199,9 +199,9 @@
 			);
 			dependencies = (
 			);
-			name = Pedometer;
-			productName = Pedometer;
-			productReference = 13B07F961A680F5B00A75B9A /* Pedometer.app */;
+			name = walky;
+			productName = walky;
+			productReference = 13B07F961A680F5B00A75B9A /* walky.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -221,7 +221,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Pedometer" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "walky" */;
 			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -234,8 +234,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* Pedometer */,
-				00E356ED1AD99517003FC87E /* PedometerTests */,
+				13B07F861A680F5B00A75B9A /* walky */,
+				00E356ED1AD99517003FC87E /* walkyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -281,15 +281,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pedometer-PedometerTests/Pods-Pedometer-PedometerTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-walky-walkyTests/Pods-walky-walkyTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pedometer-PedometerTests/Pods-Pedometer-PedometerTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-walky-walkyTests/Pods-walky-walkyTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pedometer-PedometerTests/Pods-Pedometer-PedometerTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-walky-walkyTests/Pods-walky-walkyTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		242F4FDC78265098B35A66B5 /* [CP] Copy Pods Resources */ = {
@@ -298,15 +298,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pedometer/Pods-Pedometer-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-walky/Pods-walky-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pedometer/Pods-Pedometer-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-walky/Pods-walky-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pedometer/Pods-Pedometer-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-walky/Pods-walky-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3A0C5F41B8F68FB5C28ADD81 /* [CP] Embed Pods Frameworks */ = {
@@ -315,15 +315,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pedometer/Pods-Pedometer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-walky/Pods-walky-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pedometer/Pods-Pedometer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-walky/Pods-walky-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pedometer/Pods-Pedometer-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-walky/Pods-walky-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		691183C622467116CBE3C18A /* [CP] Copy Pods Resources */ = {
@@ -332,15 +332,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pedometer-PedometerTests/Pods-Pedometer-PedometerTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-walky-walkyTests/Pods-walky-walkyTests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pedometer-PedometerTests/Pods-Pedometer-PedometerTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-walky-walkyTests/Pods-walky-walkyTests-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pedometer-PedometerTests/Pods-Pedometer-PedometerTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-walky-walkyTests/Pods-walky-walkyTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BB987B874CA677C45A71C45F /* [CP-User] [RNFB] Core Configuration */ = {
@@ -371,7 +371,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Pedometer-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-walky-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -393,7 +393,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Pedometer-PedometerTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-walky-walkyTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -426,7 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* PedometerTests.m in Sources */,
+				00E356F31AD99517003FC87E /* walkyTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,7 +444,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* Pedometer */;
+			target = 13B07F861A680F5B00A75B9A /* walky */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -452,7 +452,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FA485F5E29023F8CB8E0F5E8 /* Pods-Pedometer-PedometerTests.debug.xcconfig */;
+			baseConfigurationReference = FA485F5E29023F8CB8E0F5E8 /* Pods-walky-walkyTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
@@ -461,7 +461,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = PedometerTests/Info.plist;
+				INFOPLIST_FILE = walkyTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -475,18 +475,18 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pedometer.app/Pedometer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/walky.app/walky";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21FE481FE6319E17C74051EC /* Pods-Pedometer-PedometerTests.release.xcconfig */;
+			baseConfigurationReference = 21FE481FE6319E17C74051EC /* Pods-walky-walkyTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = PedometerTests/Info.plist;
+				INFOPLIST_FILE = walkyTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -500,21 +500,21 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Pedometer.app/Pedometer";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/walky.app/walky";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D566B5727FC1A467DA3DD374 /* Pods-Pedometer.debug.xcconfig */;
+			baseConfigurationReference = D566B5727FC1A467DA3DD374 /* Pods-walky.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Pedometer/Pedometer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = walky/walky.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SNN4X72TFK;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = Pedometer/Info.plist;
+				INFOPLIST_FILE = walky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -525,7 +525,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.poteboy.walky;
-				PRODUCT_NAME = Pedometer;
+				PRODUCT_NAME = walky;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -534,14 +534,14 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 62B2BBAB1B18C4DE2388AB50 /* Pods-Pedometer.release.xcconfig */;
+			baseConfigurationReference = 62B2BBAB1B18C4DE2388AB50 /* Pods-walky.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Pedometer/Pedometer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = walky/walky.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SNN4X72TFK;
-				INFOPLIST_FILE = Pedometer/Info.plist;
+				INFOPLIST_FILE = walky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -552,7 +552,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.poteboy.walky;
-				PRODUCT_NAME = Pedometer;
+				PRODUCT_NAME = walky;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -591,7 +591,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -657,7 +657,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 ";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -686,7 +686,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "PedometerTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "walkyTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -695,7 +695,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Pedometer" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "walky" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -704,7 +704,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Pedometer" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "walky" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
