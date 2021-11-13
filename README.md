@@ -1,5 +1,7 @@
 # Pedometer
 
+backend: https://github.com/eddyariki/walky-backend
+
 ## 立ち上げ方法
 
 依存関係を色々インストールする
