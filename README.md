@@ -30,4 +30,4 @@ rm -rf ios/build
 再度入れ直す
 ```sh
 yarn cache clean && yarn
-```
+```# walky-backend
