@@ -45,13 +45,15 @@ export type Sample = {
 export type getExamplesQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type getExamplesQuery = { __typename?: 'Query', examples: Array<{ __typename?: 'Example', id: string } | null | undefined> | null | undefined };
+export type getExamplesQuery = { __typename?: 'Query', examples: Array<{ __typename?: 'Example', id: string, name: string, message: string } | null | undefined> | null | undefined };
 
 
 export const getExamplesDocument = gql`
     query getExamples {
   examples {
     id
+    name
+    message
   }
 }
     `;

@@ -41,13 +41,16 @@ AppleHealthKit.initHealthKit(permissions, (error: string) => {
 
 const ScreenComponent: FC = () => {
 
-  const {data} = usegetExamplesQuery()
+  const {data, loading} = usegetExamplesQuery()
 
-  console.log(data)
+  const examples =  data?.examples ?? []
 
   return (
     <Wrapper>
       <TestText>test success!</TestText>
+      {examples.map((val, index) => {
+        return <TestText key={index}>{val?.message}</TestText>
+      })}
     </Wrapper>
   );
 };
