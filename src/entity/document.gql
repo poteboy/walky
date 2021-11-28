@@ -1,0 +1,3 @@
+fragment UserUnit on User {
+  uid
+}
