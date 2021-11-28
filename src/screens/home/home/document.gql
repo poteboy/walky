@@ -1,0 +1,13 @@
+query fetchSamplesAndExamples {
+  examples {
+    id
+    name
+    message
+  }
+
+  samples {
+    id
+    title
+    status
+  }
+}

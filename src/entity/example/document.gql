@@ -1,0 +1,5 @@
+fragment ExampleUnit on Example {
+  id
+  name
+  message
+}

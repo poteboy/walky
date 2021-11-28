@@ -1,7 +1,0 @@
-query getExamples {
-  examples {
-    id
-    name
-    message
-  }
-}
