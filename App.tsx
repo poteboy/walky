@@ -8,9 +8,10 @@ import {
   InMemoryCache,
   ApolloProvider,
 } from "@apollo/client";
+import { urls } from '@src/constants'
 
 const client = new ApolloClient({
-  uri: "https://48p1r2roz4.sse.codesandbox.io",
+  uri: __DEV__ ? urls.dev : urls.dev,
   cache: new InMemoryCache(),
 });
 

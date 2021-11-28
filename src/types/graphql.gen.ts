@@ -13,6 +13,13 @@ export type Scalars = {
   Float: number;
 };
 
+export type Example = {
+  __typename?: 'Example';
+  id: Scalars['ID'];
+  message: Scalars['String'];
+  name: Scalars['String'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   _empty: Maybe<Scalars['String']>;
@@ -20,12 +27,15 @@ export type Mutation = {
 
 export type Query = {
   __typename?: 'Query';
-  _empty: Maybe<Scalars['String']>;
+  examples: Maybe<Array<Maybe<Example>>>;
+  samples: Maybe<Array<Maybe<Sample>>>;
 };
 
-export type User = {
-  __typename?: 'User';
-  uid: Scalars['ID'];
+export type Sample = {
+  __typename?: 'Sample';
+  id: Scalars['ID'];
+  status: Scalars['String'];
+  title: Scalars['String'];
 };
 
 
@@ -98,21 +108,30 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>;
+  Example: ResolverTypeWrapper<Example>;
   ID: ResolverTypeWrapper<Scalars['ID']>;
   Mutation: ResolverTypeWrapper<{}>;
   Query: ResolverTypeWrapper<{}>;
+  Sample: ResolverTypeWrapper<Sample>;
   String: ResolverTypeWrapper<Scalars['String']>;
-  User: ResolverTypeWrapper<User>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Boolean: Scalars['Boolean'];
+  Example: Example;
   ID: Scalars['ID'];
   Mutation: {};
   Query: {};
+  Sample: Sample;
   String: Scalars['String'];
-  User: User;
+};
+
+export type ExampleResolvers<ContextType = any, ParentType extends ResolversParentTypes['Example'] = ResolversParentTypes['Example']> = {
+  id: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  message: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  name: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
@@ -120,17 +139,21 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  _empty: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  examples: Resolver<Maybe<Array<Maybe<ResolversTypes['Example']>>>, ParentType, ContextType>;
+  samples: Resolver<Maybe<Array<Maybe<ResolversTypes['Sample']>>>, ParentType, ContextType>;
 };
 
-export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
-  uid: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+export type SampleResolvers<ContextType = any, ParentType extends ResolversParentTypes['Sample'] = ResolversParentTypes['Sample']> = {
+  id: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  status: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  title: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {
+  Example: ExampleResolvers<ContextType>;
   Mutation: MutationResolvers<ContextType>;
   Query: QueryResolvers<ContextType>;
-  User: UserResolvers<ContextType>;
+  Sample: SampleResolvers<ContextType>;
 };
 

@@ -15,6 +15,13 @@ export type Scalars = {
   Float: number;
 };
 
+export type Example = {
+  __typename?: 'Example';
+  id: Scalars['ID'];
+  message: Scalars['String'];
+  name: Scalars['String'];
+};
+
 export type Mutation = {
   __typename?: 'Mutation';
   _empty: Maybe<Scalars['String']>;
@@ -22,18 +29,23 @@ export type Mutation = {
 
 export type Query = {
   __typename?: 'Query';
-  _empty: Maybe<Scalars['String']>;
+  examples: Maybe<Array<Maybe<Example>>>;
+  samples: Maybe<Array<Maybe<Sample>>>;
 };
 
-export type User = {
-  __typename?: 'User';
-  uid: Scalars['ID'];
+export type Sample = {
+  __typename?: 'Sample';
+  id: Scalars['ID'];
+  status: Scalars['String'];
+  title: Scalars['String'];
 };
 
-export type UserUnitFragment = { __typename?: 'User', uid: string };
+export type ExampleUnitFragment = { __typename?: 'Example', id: string, name: string, message: string };
 
-export const UserUnitFragmentDoc = gql`
-    fragment UserUnit on User {
-  uid
+export const ExampleUnitFragmentDoc = gql`
+    fragment ExampleUnit on Example {
+  id
+  name
+  message
 }
     `;

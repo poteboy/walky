@@ -1,9 +1,17 @@
-type User {
-  uid: ID!
+type Example {
+  id: ID!
+  name: String!
+  message: String!
 }
 
+type Sample {
+  id: ID!
+  title: String!
+  status: String!
+}
 type Query {
-  _empty: String
+  examples: [Example]
+  samples: [Sample]
 }
 
 type Mutation {
