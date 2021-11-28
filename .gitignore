@@ -60,3 +60,5 @@ buck-out/
 /ios/Pods/
 
 /ios/walky/AppDelegate.m
+
+**/*.gen.*
