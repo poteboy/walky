@@ -1,0 +1,24 @@
+type Example {
+  id: ID!
+  name: String!
+  message: String!
+}
+
+type Sample {
+  id: ID!
+  title: String!
+  status: String!
+}
+type Query {
+  examples: [Example]
+  samples: [Sample]
+}
+
+type Mutation {
+  _empty: String
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}

@@ -6,6 +6,8 @@ import AppleHealthKit, {
   HealthValue,
   HealthKitPermissions,
 } from 'react-native-health';
+import { useQuery, gql } from '@apollo/client'
+import {usegetExamplesQuery } from '@src/entity/document.gen'
 
 /* Permission options */
 const permissions = {
@@ -38,9 +40,17 @@ AppleHealthKit.initHealthKit(permissions, (error: string) => {
 });
 
 const ScreenComponent: FC = () => {
+
+  const {data, loading} = usegetExamplesQuery()
+
+  const examples =  data?.examples ?? []
+
   return (
     <Wrapper>
       <TestText>test success!</TestText>
+      {examples.map((val, index) => {
+        return <TestText key={index}>{val?.message}</TestText>
+      })}
     </Wrapper>
   );
 };
