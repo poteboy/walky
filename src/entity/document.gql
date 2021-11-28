@@ -1,5 +1,5 @@
-fragment ExampleUnit on Example {
-  id
-  name
-  message
+query getExamples {
+  examples {
+    id
+  }
 }
