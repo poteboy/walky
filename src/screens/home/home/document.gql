@@ -1,13 +1,6 @@
-query fetchSamplesAndExamples {
-  examples {
-    id
-    name
-    message
-  }
-
-  samples {
-    id
-    title
-    status
+query FetchUsers {
+  users {
+    uid
+    displayName
   }
 }

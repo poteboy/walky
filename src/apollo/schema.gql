@@ -1,17 +1,14 @@
-type Example {
-  id: ID!
+type User {
+  age: String
+  birthday: String
   name: String!
-  message: String!
-}
-
-type Sample {
-  id: ID!
-  title: String!
-  status: String!
+  displayName: String!
+  email: String!
+  uid: ID!
+  weight: String!
 }
 type Query {
-  examples: [Example]
-  samples: [Sample]
+  users: [User]
 }
 
 type Mutation {

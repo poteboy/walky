@@ -1,14 +1,12 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import styled from 'styled-components/native';
 import {useTranslation} from 'react-i18next';
-import {Button} from 'react-native';
+import {Button, View} from 'react-native';
 import AppleHealthKit, {
   HealthValue,
   HealthKitPermissions,
 } from 'react-native-health';
-import { usefetchSamplesAndExamplesQuery } from './document.gen'
-import {ExampleUnitFragment} from '@src/entity/example/document.gen'
-import { SampleUnitFragment } from '@src/entity/sample/document.gen';
+import {useFetchUsersQuery} from './document.gen'
 
 /* Permission options */
 const permissions = {
@@ -42,13 +40,26 @@ AppleHealthKit.initHealthKit(permissions, (error: string) => {
 
 const ScreenComponent: FC = () => {
 
-  const {data, loading} = usefetchSamplesAndExamplesQuery()
+  const {data, loading} = useFetchUsersQuery()
 
-  const samples = data?.samples ?? []
+  useEffect(() => {
+
+    if(!loading)  {
+      console.log(data)
+    }
+  }, [loading])
 
   return (
     <Wrapper>
       <TestText>test success!</TestText>
+      {data?.users?.map((user, index) => {
+        return (
+          <View key={index}>
+          <TestText>{user?.uid}</TestText>
+          <TestText>{user?.displayName}</TestText>
+          </View>
+        )
+      })}
     </Wrapper>
   );
 };
