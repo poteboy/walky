@@ -1,6 +1,6 @@
 # Pedometer
 
-backend: https://github.com/eddyariki/walky-backend
+backend: https://github.com/eddyariki/walky-functions
 
 ## 立ち上げ方法
 
