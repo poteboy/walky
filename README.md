@@ -1,4 +1,4 @@
-# Pedometer
+# walky
 
 backend: https://github.com/eddyariki/walky-functions
 
@@ -18,6 +18,15 @@ pod install
 cd ..
 yarn start
 react-native run-ios
+```
+
+## ApolloでTSの型付カスタムHookを自動生成する
+
+サーバー側のtypeDefsと同様のものを`src/apollo/schema.gql`に記載する
+
+次のコマンドを打つ
+```sh
+yarn graphql-codegen
 ```
 
 ## 立ち上がらない時
