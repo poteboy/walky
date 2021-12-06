@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useMemo} from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import { AppDrawer } from './drawer';
 import { authRoute } from './route';
@@ -11,7 +11,9 @@ const Authentication = createStackNavigator();
 const AuthenticationNavigator: React.FC = () => {
 
     const {authLoading, authorized} = useAuth()
-    const initialRouteName = authorized ? authRoute.DRAWER : authRoute.AUTH
+    const initialRouteName = useMemo(() => {
+        return authorized ? authRoute.DRAWER : authRoute.AUTH
+    }, [authorized])
 
 
     return (

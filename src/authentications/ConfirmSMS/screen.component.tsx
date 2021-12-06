@@ -5,21 +5,27 @@ import { VStack, Button, HStack } from 'native-base'
 import styled from 'styled-components/native';
 import { route } from '../route'
 import { NativeStackNavigationProp} from '@react-navigation/native-stack';
+import { useAuth } from '@src/hooks';
 import {AuthNavigationProps} from '../AuthStackNavigator'
+import {authRoute} from '@src/navigation/route'
 
 const ScreenCompoennt: FC = () => {
 
-    const navigator = useNavigation<AuthNavigationProps>()
+    const navigation = useNavigation<AuthNavigationProps>()
+    const {setAuthorized} = useAuth()
 
-    const onSendSMS = () => {
-        navigator.navigate(route.confirmSMS)
+    const onSignUp = () => {
+        setAuthorized(true)
+        const authNavigation = navigation.getParent()
+        if (authNavigation) {
+            authNavigation.navigate(authRoute.DRAWER)
+        }
     }
-
 
     return (
         <Layout>
             <VerticalBox>
-                <Button onPress={onSendSMS}>SMSを送信する</Button>
+                <Button onPress={onSignUp}>確認</Button>
             </VerticalBox>
         </Layout>
     )

@@ -8,5 +8,5 @@ export const useAuth = () => {
     const [authLoading, setAuthLoading] = useState(false)
 
 
-    return {authorized , authLoading}
+    return {authorized , authLoading, setAuthorized}
 }
