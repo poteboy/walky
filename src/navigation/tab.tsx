@@ -13,8 +13,6 @@ export const AppTab = () => {
       initialRouteName={route.HOME}
       screenOptions={{headerShown: false}}>
       <Tab.Screen name={route.HOME} component={HomeNavigator} />
-      <Tab.Screen name={route.MAP} component={MapTest} />
-      <Tab.Screen name={route.AUTH} component={AuthTest} />
     </Tab.Navigator>
   );
 };
