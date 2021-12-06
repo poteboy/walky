@@ -1,17 +1,19 @@
 import React, {FC} from 'react'
 import { useNavigation } from '@react-navigation/native';
 import Layout from '@src/components/Layout';
-import { VStack, Button, HStack } from 'native-base'
+import { VStack, Button, HStack, Text } from 'native-base'
 import styled from 'styled-components/native';
 import { route } from '../route'
 import { NativeStackNavigationProp} from '@react-navigation/native-stack';
 import { useAuth } from '@src/hooks';
-import {AuthNavigationProps} from '../AuthStackNavigator'
+import {AuthStackNavigationProps, AuthNavigaionProps} from '../AuthStackNavigator'
 import {authRoute} from '@src/navigation/route'
 
-const ScreenCompoennt: FC = () => {
+const ScreenCompoennt: FC<AuthNavigaionProps> = ({route}) => {
 
-    const navigation = useNavigation<AuthNavigationProps>()
+    const {phone} = route.params
+
+    const navigation = useNavigation<AuthStackNavigationProps>()
     const {setAuthorized} = useAuth()
 
     const onSignUp = () => {
@@ -25,6 +27,7 @@ const ScreenCompoennt: FC = () => {
     return (
         <Layout>
             <VerticalBox>
+                <Text>{phone}</Text>
                 <Button onPress={onSignUp}>確認</Button>
             </VerticalBox>
         </Layout>

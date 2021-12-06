@@ -5,14 +5,14 @@ import { VStack, Button, HStack } from 'native-base'
 import styled from 'styled-components/native';
 import { route } from '../route'
 import { NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {AuthNavigationProps} from '../AuthStackNavigator'
+import {AuthStackNavigationProps, AuthNavigaionProps} from '../AuthStackNavigator'
 
-const ScreenCompoennt: FC = () => {
+const ScreenCompoennt: FC<AuthNavigaionProps> = props => {
 
-    const navigator = useNavigation<AuthNavigationProps>()
+    const navigator = useNavigation<AuthStackNavigationProps>()
 
     const onSendSMS = () => {
-        navigator.navigate(route.confirmSMS)
+        navigator.navigate(route.ConfirmSMS, {phone: '090-1234-1234'})
     }
 
 

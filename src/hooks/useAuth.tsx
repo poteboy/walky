@@ -3,7 +3,6 @@ import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 
 export const useAuth = () => {
 
-
     const [authorized, setAuthorized] = useState(false)
     const [authLoading, setAuthLoading] = useState(false)
 
