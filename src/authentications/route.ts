@@ -1,3 +1,4 @@
 export const route = {
-    signUp: 'signUp'
+    signUp: 'signUp',
+    welcome: 'welcome'
 }
