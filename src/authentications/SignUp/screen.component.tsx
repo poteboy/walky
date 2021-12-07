@@ -10,31 +10,17 @@ import {useForm, Controller} from 'react-hook-form';
 
 const ScreenCompoennt: FC = () => {
   const navigator = useAuthNavigation();
-  const {control, handleSubmit} = useForm();
+  const {control, handleSubmit} = useForm<FormValue>();
 
   const onSendSMS = () => {
     navigator.navigate(AuthRootKeys.ConfirmSMS, {phone: '090-1234-1234'});
   };
 
   return (
-    <Layout>
+    <Layout gradient>
       <VerticalBox>
         <FormControl>
           <FormControl.Label>First Name</FormControl.Label>
-          <Controller
-            control={control}
-            render={({onChange, onBlur, value}) => (
-              <Input
-                onBlur={onBlur}
-                placeholder="John"
-                onChangeText={val => onChange(val)}
-                value={value}
-              />
-            )}
-            name="firstName"
-            rules={{required: 'Field is required', minLength: 3}}
-            defaultValue=""
-          />
         </FormControl>
         <Button onPress={onSendSMS}>SMSを送信する</Button>
       </VerticalBox>
