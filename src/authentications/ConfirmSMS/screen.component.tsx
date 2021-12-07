@@ -1,20 +1,22 @@
 import React, {FC} from 'react'
-import { useNavigation } from '@react-navigation/native';
+import { useRoute, RouteProp } from '@react-navigation/native';
 import Layout from '@src/components/Layout';
-import { VStack, Button, HStack, Text } from 'native-base'
+import { VStack, Button, HStack, Text, FormControl } from 'native-base'
 import styled from 'styled-components/native';
-import { route } from '../route'
-import { NativeStackNavigationProp} from '@react-navigation/native-stack';
+import { AuthRootKeys, AuthParamList } from '../route'
+import { useAuthNavigation } from '../useAuthNavigation';
 import { useAuth } from '@src/hooks';
-import {AuthStackNavigationProps, AuthNavigaionProps} from '../AuthStackNavigator'
 import {authRoute} from '@src/navigation/route'
+import { NavigationProps } from '@src/navigation/navigation-props'
 
-const ScreenCompoennt: FC<AuthNavigaionProps> = ({route}) => {
+const ScreenCompoennt: FC = () => {
+
+
+    const route = useRoute<RouteProp<AuthParamList, 'ConfirmSMS'>>()
+    const navigation = useAuthNavigation()
+    const {setAuthorized} = useAuth()
 
     const {phone} = route.params
-
-    const navigation = useNavigation<AuthStackNavigationProps>()
-    const {setAuthorized} = useAuth()
 
     const onSignUp = () => {
         setAuthorized(true)

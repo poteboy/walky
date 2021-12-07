@@ -3,16 +3,16 @@ import { useNavigation } from '@react-navigation/native';
 import Layout from '@src/components/Layout';
 import { VStack, Button, HStack } from 'native-base'
 import styled from 'styled-components/native';
-import { route } from '../route'
+import { AuthRootKeys } from '../route'
 import { NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {AuthStackNavigationProps, AuthNavigaionProps} from '../AuthStackNavigator'
+import {useAuthNavigation} from '../useAuthNavigation'
 
-const ScreenComponent: FC<AuthNavigaionProps> = props => {
+const ScreenComponent: FC = () => {
 
-    const navigation = useNavigation<AuthStackNavigationProps>()
+    const navigation = useAuthNavigation()
 
     const onSignUp = () => {
-        navigation.navigate(route.SignUp, {phone: 'hello'})
+        navigation.navigate(AuthRootKeys.SignUp)
     }
 
     return (
