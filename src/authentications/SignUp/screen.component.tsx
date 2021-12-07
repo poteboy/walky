@@ -52,4 +52,9 @@ const HorizontalBox = styled(HStack)`
   justify-content: center;
 `;
 
+type FormValue = {
+  name: string;
+  phone: string;
+};
+
 export default ScreenCompoennt;
