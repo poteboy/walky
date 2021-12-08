@@ -6,26 +6,40 @@ import styled from 'styled-components/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useAuthNavigation} from '../useAuthNavigation';
 import {AuthRootKeys} from '../route';
-import {useForm, Controller} from 'react-hook-form';
+import {
+  useForm,
+  FieldValues,
+  Controller,
+  UseControllerProps,
+} from 'react-hook-form';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
-import firestore from '@react-native-firebase/firestore';
+import * as yup from 'yup';
+import {yunPhoneValidation, yupNameValidation} from '@src/lib/validations';
+import {yupResolver} from '@hookform/resolvers/yup';
+import Spacer from '@src/components/Spacer';
 
 const ScreenCompoennt: FC = () => {
   const navigator = useAuthNavigation();
-  const {control, handleSubmit} = useForm<FormValue>();
+  const {control, handleSubmit} = useForm<FormValue>({
+    mode: 'onChange',
+    resolver: yupResolver(validationSchema),
+    defaultValues: {},
+  });
   const [confirm, setConfirm] =
     useState<FirebaseAuthTypes.ConfirmationResult | null>(null);
 
   const onSendSMS = async () => {
-    // navigator.navigate(AuthRootKeys.ConfirmSMS, {phone: '090-1234-1234'});
-    await auth().setLanguageCode('ja');
-    const confirmation = await auth().signInWithPhoneNumber('+81 9078883147');
+    const confirmation = await auth().signInWithPhoneNumber('');
     setConfirm(confirmation);
   };
 
   useEffect(() => {
     if (confirm) {
-      navigator.navigate(AuthRootKeys.ConfirmSMS, {confirm: confirm});
+      navigator.navigate(AuthRootKeys.ConfirmSMS, {
+        confirm: confirm,
+        phone: '',
+        name: '',
+      });
     }
   }, [confirm]);
 
@@ -33,7 +47,42 @@ const ScreenCompoennt: FC = () => {
     <Layout gradient>
       <VerticalBox>
         <FormControl>
-          <FormControl.Label>First Name</FormControl.Label>
+          <FormControl.Label>名前</FormControl.Label>
+          <Controller
+            control={control}
+            name="name"
+            render={({
+              field: {onChange, onBlur, value},
+              formState: {errors},
+            }) => (
+              <Input
+                {...control?.register('name')}
+                value={value}
+                onBlur={onBlur}
+                placeholder="名前"
+                isInvalid={!!errors.name}
+                onChangeText={values => onChange(values)}
+              />
+            )}
+          />
+          <Spacer size={10} />
+          <Controller
+            control={control}
+            name="phone"
+            render={({
+              field: {onChange, onBlur, value},
+              formState: {errors},
+            }) => (
+              <Input
+                {...control?.register('phone')}
+                value={value}
+                onBlur={onBlur}
+                placeholder="電話番号"
+                isInvalid={!!errors.name}
+                onChangeText={values => onChange(values)}
+              />
+            )}
+          />
         </FormControl>
         <Button onPress={onSendSMS}>SMSを送信する</Button>
       </VerticalBox>
@@ -55,5 +104,10 @@ type FormValue = {
   name: string;
   phone: string;
 };
+
+const validationSchema = yup.object().shape({
+  name: yupNameValidation,
+  phone: yunPhoneValidation,
+});
 
 export default ScreenCompoennt;
