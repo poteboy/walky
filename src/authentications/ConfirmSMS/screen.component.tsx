@@ -14,7 +14,7 @@ const ScreenCompoennt: FC = () => {
   const navigation = useAuthNavigation();
   const {setAuthorized} = useAuth();
 
-  const {phone} = route.params;
+  const {confirm} = route.params;
 
   const onSignUp = () => {
     setAuthorized(true);
@@ -27,7 +27,6 @@ const ScreenCompoennt: FC = () => {
   return (
     <Layout gradient>
       <VerticalBox>
-        <Text>{phone}</Text>
         <Button onPress={onSignUp}>確認</Button>
       </VerticalBox>
     </Layout>

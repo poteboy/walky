@@ -23,7 +23,7 @@ const ScreenComponent: FC = () => {
   return (
     <Layout gradient>
       <VerticalBox>
-        {/* <Image source={require('../../../assets/phone.png')} size={100} /> */}
+        <Image source={require('../../../assets/phone2.png')} size={100} />
         <HStack justifyContent="center">
           <Boder left />
           <Text color={colors.white}>登録がお済みでない方はこちら</Text>

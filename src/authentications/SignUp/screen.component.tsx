@@ -19,12 +19,14 @@ const ScreenCompoennt: FC = () => {
   const onSendSMS = async () => {
     // navigator.navigate(AuthRootKeys.ConfirmSMS, {phone: '090-1234-1234'});
     await auth().setLanguageCode('ja');
-    const confirmation = await auth().signInWithPhoneNumber('');
+    const confirmation = await auth().signInWithPhoneNumber('+81 9078883147');
     setConfirm(confirmation);
   };
 
   useEffect(() => {
-    console.log(confirm);
+    if (confirm) {
+      navigator.navigate(AuthRootKeys.ConfirmSMS, {confirm: confirm});
+    }
   }, [confirm]);
 
   return (
