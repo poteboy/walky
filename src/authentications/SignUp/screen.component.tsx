@@ -1,7 +1,7 @@
 import React, {FC, useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Layout from '@src/components/Layout';
-import {VStack, Button, HStack, FormControl, Input} from 'native-base';
+import {VStack, Button, HStack, FormControl, Input, Text} from 'native-base';
 import styled from 'styled-components/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useAuthNavigation} from '../useAuthNavigation';
@@ -20,32 +20,40 @@ import Spacer from '@src/components/Spacer';
 
 const ScreenCompoennt: FC = () => {
   const navigator = useAuthNavigation();
-  const {control, handleSubmit} = useForm<FormValue>({
+  const {control, handleSubmit, getValues, formState} = useForm<FormValue>({
     mode: 'onChange',
     resolver: yupResolver(validationSchema),
     defaultValues: {},
   });
+  const {isValid, errors} = formState;
   const [confirm, setConfirm] =
     useState<FirebaseAuthTypes.ConfirmationResult | null>(null);
 
   const onSendSMS = async () => {
-    const confirmation = await auth().signInWithPhoneNumber('');
-    setConfirm(confirmation);
+    if (name && phone) {
+      const formattedPhone = '+81 ' + phone.slice(1, -1);
+      console.log(formattedPhone);
+      const confirmation = await auth().signInWithPhoneNumber('');
+      setConfirm(confirmation);
+    }
   };
 
   useEffect(() => {
     if (confirm) {
       navigator.navigate(AuthRootKeys.ConfirmSMS, {
         confirm: confirm,
-        phone: '',
-        name: '',
+        phone: name,
+        name: phone,
       });
     }
   }, [confirm]);
 
+  const {name, phone} = getValues();
+
   return (
     <Layout gradient>
       <VerticalBox>
+        <Title>新規会員登録</Title>
         <FormControl>
           <FormControl.Label>名前</FormControl.Label>
           <Controller
@@ -84,15 +92,24 @@ const ScreenCompoennt: FC = () => {
             )}
           />
         </FormControl>
-        <Button onPress={onSendSMS}>SMSを送信する</Button>
+        <Button onPress={onSendSMS} isDisabled={!isValid}>
+          SMSを送信する
+        </Button>
       </VerticalBox>
     </Layout>
   );
 };
 
+const Title = styled(Text)`
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+`;
+
 const VerticalBox = styled(VStack)`
   height: 100%;
-  justify-content: center;
+  padding: 50px 0;
+  /* justify-content: center; */
 `;
 
 const HorizontalBox = styled(HStack)`
