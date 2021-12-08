@@ -16,6 +16,10 @@ target 'walky' do
 
   pod 'RNAppleHealthKit', path: '../node_modules/react-native-health'
 
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+
   target 'walkyTests' do
     inherit! :complete
     # Pods for testing

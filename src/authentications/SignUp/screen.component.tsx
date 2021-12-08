@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useState, useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import Layout from '@src/components/Layout';
 import {VStack, Button, HStack, FormControl, Input} from 'native-base';
@@ -7,14 +7,25 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useAuthNavigation} from '../useAuthNavigation';
 import {AuthRootKeys} from '../route';
 import {useForm, Controller} from 'react-hook-form';
+import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import firestore from '@react-native-firebase/firestore';
 
 const ScreenCompoennt: FC = () => {
   const navigator = useAuthNavigation();
   const {control, handleSubmit} = useForm<FormValue>();
+  const [confirm, setConfirm] =
+    useState<FirebaseAuthTypes.ConfirmationResult | null>(null);
 
-  const onSendSMS = () => {
-    navigator.navigate(AuthRootKeys.ConfirmSMS, {phone: '090-1234-1234'});
+  const onSendSMS = async () => {
+    // navigator.navigate(AuthRootKeys.ConfirmSMS, {phone: '090-1234-1234'});
+    await auth().setLanguageCode('ja');
+    const confirmation = await auth().signInWithPhoneNumber('');
+    setConfirm(confirmation);
   };
+
+  useEffect(() => {
+    console.log(confirm);
+  }, [confirm]);
 
   return (
     <Layout gradient>
