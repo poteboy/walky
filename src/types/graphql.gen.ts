@@ -4,6 +4,7 @@ export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type RequireFields<T, K extends keyof T> = { [X in Exclude<keyof T, K>]?: T[X] } & { [P in K]-?: NonNullable<T[P]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -15,7 +16,14 @@ export type Scalars = {
 
 export type Mutation = {
   __typename?: 'Mutation';
-  _empty: Maybe<Scalars['String']>;
+  registerUser: Maybe<User>;
+};
+
+
+export type MutationregisterUserArgs = {
+  name: Scalars['String'];
+  phone: Scalars['String'];
+  uid: Scalars['ID'];
 };
 
 export type Query = {
@@ -25,13 +33,9 @@ export type Query = {
 
 export type User = {
   __typename?: 'User';
-  age: Maybe<Scalars['String']>;
-  birthday: Maybe<Scalars['String']>;
-  displayName: Scalars['String'];
-  email: Scalars['String'];
   name: Scalars['String'];
+  phone: Scalars['String'];
   uid: Scalars['ID'];
-  weight: Scalars['String'];
 };
 
 
@@ -122,7 +126,7 @@ export type ResolversParentTypes = {
 };
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  _empty: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  registerUser: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationregisterUserArgs, 'name' | 'phone' | 'uid'>>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
@@ -130,13 +134,9 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 };
 
 export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
-  age: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  birthday: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
-  displayName: Resolver<ResolversTypes['String'], ParentType, ContextType>;
-  email: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   name: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  phone: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   uid: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
-  weight: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 

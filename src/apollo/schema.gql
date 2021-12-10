@@ -1,18 +1,15 @@
-type User {
-  age: String
-  birthday: String
-  name: String!
-  displayName: String!
-  email: String!
-  uid: ID!
-  weight: String!
-}
 type Query {
   users: [User]
 }
 
 type Mutation {
-  _empty: String
+  registerUser(uid: ID!, name: String!, phone: String!): User
+}
+
+type User {
+  uid: ID!
+  name: String!
+  phone: String!
 }
 
 schema {

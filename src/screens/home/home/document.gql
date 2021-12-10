@@ -1,6 +1,6 @@
 query FetchUsers {
   users {
     uid
-    displayName
+    name
   }
 }

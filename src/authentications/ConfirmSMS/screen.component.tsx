@@ -15,16 +15,25 @@ import {
 } from 'react-native-confirmation-code-field';
 import {StyleSheet} from 'react-native';
 import {colors} from '@src/constants';
+import {useRegisterUserMutation} from './document.gen';
 
 const ScreenCompoennt: FC = () => {
   const route = useRoute<RouteProp<AuthParamList, 'ConfirmSMS'>>();
   const navigation = useAuthNavigation();
   const {setAuthorized} = useAuth();
 
-  const {confirm} = route.params;
+  const {confirm, name, phone} = route.params;
 
   const onSignUp = () => {
-    route.params.confirm.confirm(authCode).then(() => {
+    route.params.confirm.confirm(authCode).then(v => {
+      submit({
+        variables: {
+          uid: v?.user.uid as string,
+          phone: v?.user.phoneNumber ?? phone,
+          name: name,
+        },
+      });
+
       setAuthorized(true);
       const authNavigation = navigation.getParent();
       if (authNavigation) {
@@ -43,6 +52,12 @@ const ScreenCompoennt: FC = () => {
   const isValid = useMemo(() => {
     return authCode.length === 6;
   }, [authCode]);
+
+  const [submit] = useRegisterUserMutation({
+    onError(error) {
+      console.log(error);
+    },
+  });
 
   return (
     <Layout gradient>
