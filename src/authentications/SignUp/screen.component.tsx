@@ -51,8 +51,8 @@ const ScreenCompoennt: FC = () => {
     if (confirm) {
       navigator.navigate(AuthRootKeys.ConfirmSMS, {
         confirm: confirm,
-        phone: name,
-        name: phone,
+        phone: phone,
+        name: name,
       });
     }
   }, [confirm]);
