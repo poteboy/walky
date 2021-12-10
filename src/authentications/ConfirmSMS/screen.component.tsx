@@ -5,7 +5,7 @@ import {VStack, Button, HStack, Text, FormControl, View} from 'native-base';
 import styled from 'styled-components/native';
 import {AuthRootKeys, AuthParamList} from '../route';
 import {useAuthNavigation} from '../useAuthNavigation';
-import {useAuth} from '@src/hooks';
+import {useAuth, useSnackBar} from '@src/hooks';
 import {authRoute} from '@src/navigation/route';
 import {
   CodeField,
@@ -21,25 +21,31 @@ const ScreenCompoennt: FC = () => {
   const route = useRoute<RouteProp<AuthParamList, 'ConfirmSMS'>>();
   const navigation = useAuthNavigation();
   const {setAuthorized} = useAuth();
+  const {showSnack} = useSnackBar();
 
   const {confirm, name, phone} = route.params;
 
   const onSignUp = () => {
-    route.params.confirm.confirm(authCode).then(v => {
-      submit({
-        variables: {
-          uid: v?.user.uid as string,
-          phone: v?.user.phoneNumber ?? phone,
-          name: name,
-        },
+    route.params.confirm
+      .confirm(authCode)
+      .then(v => {
+        submit({
+          variables: {
+            uid: v?.user.uid as string,
+            phone: v?.user.phoneNumber ?? phone,
+            name: name,
+          },
+        }).then(() => {
+          setAuthorized(true);
+          const authNavigation = navigation.getParent();
+          if (authNavigation) {
+            authNavigation.navigate(authRoute.DRAWER);
+          }
+        });
+      })
+      .catch(e => {
+        showSnack({message: '認証コードに誤りがあります'});
       });
-
-      setAuthorized(true);
-      const authNavigation = navigation.getParent();
-      if (authNavigation) {
-        authNavigation.navigate(authRoute.DRAWER);
-      }
-    });
   };
 
   const [authCode, setAuthCode] = useState('');
@@ -55,7 +61,7 @@ const ScreenCompoennt: FC = () => {
 
   const [submit] = useRegisterUserMutation({
     onError(error) {
-      console.log(error);
+      showSnack({message: 'エラーが起きました'});
     },
   });
 
