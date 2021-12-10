@@ -8798,6 +8798,11 @@ react-native-codegen@^0.0.7:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
+react-native-confirmation-code-field@^7.2.0:
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-confirmation-code-field/-/react-native-confirmation-code-field-7.2.0.tgz#d0f23476209a4d03c8edf6b888c6c41a91360fc2"
+  integrity sha512-jnNLvU7XPdPAcPpJAeYAlLpNsXmz7eTN3j9gOEeBJujrLj4n81wCKPFvwZ0crycawxh8UhqE/0df6274yMiIeg==
+
 react-native-gesture-handler@^1.10.3:
   version "1.10.3"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.10.3.tgz#942bbf2963bbf49fa79593600ee9d7b5dab3cfc0"

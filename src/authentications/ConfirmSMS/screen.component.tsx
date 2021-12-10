@@ -1,13 +1,20 @@
 import React, {FC, useState, useEffect, useMemo, useCallback} from 'react';
 import {useRoute, RouteProp} from '@react-navigation/native';
 import Layout from '@src/components/Layout';
-import {VStack, Button, HStack, Text, FormControl, Input} from 'native-base';
+import {VStack, Button, HStack, Text, FormControl, View} from 'native-base';
 import styled from 'styled-components/native';
 import {AuthRootKeys, AuthParamList} from '../route';
 import {useAuthNavigation} from '../useAuthNavigation';
 import {useAuth} from '@src/hooks';
 import {authRoute} from '@src/navigation/route';
-import {NavigationProps} from '@src/navigation/navigation-props';
+import {
+  CodeField,
+  Cursor,
+  useBlurOnFulfill,
+  useClearByFocusCell,
+} from 'react-native-confirmation-code-field';
+import {StyleSheet} from 'react-native';
+import {colors} from '@src/constants';
 
 const ScreenCompoennt: FC = () => {
   const route = useRoute<RouteProp<AuthParamList, 'ConfirmSMS'>>();
@@ -17,8 +24,7 @@ const ScreenCompoennt: FC = () => {
   const {confirm} = route.params;
 
   const onSignUp = () => {
-    const code = getAuthCode();
-    route.params.confirm.confirm(code!).then(() => {
+    route.params.confirm.confirm(authCode).then(() => {
       setAuthorized(true);
       const authNavigation = navigation.getParent();
       if (authNavigation) {
@@ -27,61 +33,40 @@ const ScreenCompoennt: FC = () => {
     });
   };
 
-  const [authCode, setAuthCode] = useState<{[key: string]: string | undefined}>(
-    {
-      '1': undefined,
-      '2': undefined,
-      '3': undefined,
-      '4': undefined,
-      '5': undefined,
-      '6': undefined,
-    },
-  );
+  const [authCode, setAuthCode] = useState('');
+  const [props, getCellOnLayoutHandler] = useClearByFocusCell({
+    value: authCode,
+    setValue: setAuthCode,
+  });
+  const ref = useBlurOnFulfill({value: authCode, cellCount: 6});
 
-  const isEnabled = useMemo(() => {
-    return (
-      !!authCode['1'] &&
-      !!authCode['2'] &&
-      !!authCode['3'] &&
-      !!authCode['4'] &&
-      !!authCode['5'] &&
-      !!authCode['6']
-    );
+  const isValid = useMemo(() => {
+    return authCode.length === 6;
   }, [authCode]);
-
-  const getAuthCode = useCallback(() => {
-    if (isEnabled) {
-      return (
-        authCode['1']! +
-        authCode['2']! +
-        authCode['3']! +
-        authCode['4']! +
-        authCode['5']! +
-        authCode['6']!
-      );
-    }
-  }, [authCode, isEnabled]);
 
   return (
     <Layout gradient>
       <VerticalBox>
-        <HorizontalBox>
-          {Object.keys(authCode).map((v, index) => {
-            return (
-              <Input
-                value={authCode[v]}
-                keyboardType="numeric"
-                onChangeText={num => {
-                  setAuthCode(authCodes => {
-                    authCodes[v] = num;
-                    return {...authCodes};
-                  });
-                }}
-              />
-            );
-          })}
-        </HorizontalBox>
-        <Button onPress={onSignUp} isDisabled={!isEnabled}>
+        <View>
+          <CodeField
+            value={authCode}
+            onChangeText={setAuthCode}
+            cellCount={6}
+            rootStyle={styles.codeFieldRoot}
+            ref={ref}
+            keyboardType="number-pad"
+            textContentType="oneTimeCode"
+            renderCell={({index, symbol, isFocused}) => (
+              <Text
+                key={index}
+                style={[styles.cell, isFocused && styles.focusCell]}
+                onLayout={getCellOnLayoutHandler(index)}>
+                {symbol || (isFocused ? <Cursor /> : null)}
+              </Text>
+            )}
+          />
+        </View>
+        <Button onPress={onSignUp} isDisabled={!isValid}>
           確認
         </Button>
       </VerticalBox>
@@ -96,8 +81,26 @@ const VerticalBox = styled(VStack)`
 
 const HorizontalBox = styled(HStack)`
   /* justify-content: center; */
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin: 0 20px;
 `;
+
+const styles = StyleSheet.create({
+  root: {flex: 1, padding: 20},
+  title: {textAlign: 'center', fontSize: 30},
+  codeFieldRoot: {marginTop: 20},
+  cell: {
+    width: 50,
+    height: 64,
+    lineHeight: 72,
+    fontSize: 24,
+    borderRadius: 4,
+    textAlign: 'center',
+    backgroundColor: colors.Gray,
+  },
+  focusCell: {
+    borderColor: '#000',
+  },
+});
 
 export default ScreenCompoennt;
