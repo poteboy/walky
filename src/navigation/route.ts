@@ -1,12 +1,17 @@
-export const authRoute = {
+export const initialRoute = {
   AUTH: 'AUTH',
-  DRAWER: 'DRAWER'
-}
+  DRAWER: 'DRAWER',
+} as const;
+
+export type InitialParamList = {
+  [initialRoute.AUTH]: undefined;
+  [initialRoute.DRAWER]: undefined;
+};
 
 export const drawerRoute = {
   home: 'home',
-  language: 'language'
-}
+  language: 'language',
+};
 
 export const route = {
   HOME: 'HOME/home',

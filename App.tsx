@@ -8,7 +8,7 @@ import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
 import {urls} from '@src/constants';
 
 const client = new ApolloClient({
-  uri: __DEV__ ? urls.dev : urls.dev,
+  uri: __DEV__ ? urls.graphqlEndpoint.dev : urls.graphqlEndpoint.productions,
   cache: new InMemoryCache(),
 });
 

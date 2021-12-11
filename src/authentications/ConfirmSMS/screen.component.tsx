@@ -6,7 +6,7 @@ import styled from 'styled-components/native';
 import {AuthRootKeys, AuthParamList} from '../route';
 import {useAuthNavigation} from '../useAuthNavigation';
 import {useAuth, useSnackBar} from '@src/hooks';
-import {authRoute} from '@src/navigation/route';
+import {initialRoute} from '@src/navigation/route';
 import {
   CodeField,
   Cursor,
@@ -39,7 +39,7 @@ const ScreenCompoennt: FC = () => {
           setAuthorized(true);
           const authNavigation = navigation.getParent();
           if (authNavigation) {
-            authNavigation.navigate(authRoute.DRAWER);
+            authNavigation.navigate(initialRoute.DRAWER);
           }
         });
       })
@@ -61,7 +61,7 @@ const ScreenCompoennt: FC = () => {
 
   const [submit] = useRegisterUserMutation({
     onError(error) {
-      showSnack({message: 'エラーが起きました'});
+      showSnack({message: error.message});
     },
   });
 

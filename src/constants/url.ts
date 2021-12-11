@@ -1,4 +1,8 @@
 export const urls = {
-  // dev: 'http://localhost:5000/pedometer-develop/us-central1/graphql',
-  dev: 'http://localhost:5001/pedometer-develop/us-central1/graphql',
+  graphqlEndpoint: {
+    // dev: 'http://localhost:5001/pedometer-develop/us-central1/graphql',
+    dev: 'https://us-central1-pedometer-develop.cloudfunctions.net/graphql',
+    productions:
+      'https://us-central1-pedometer-develop.cloudfunctions.net/graphql',
+  },
 };
