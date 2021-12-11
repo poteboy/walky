@@ -1,0 +1,5 @@
+mutation RegisterUser($uid: ID!, $name: String!, $phone: String!) {
+  registerUser(uid: $uid, name: $name, phone: $phone) {
+    ...UserUnit
+  }
+}

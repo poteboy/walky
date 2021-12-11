@@ -4,9 +4,10 @@
     "baseUrl": "./",
     "paths": {
       "@src/*": ["src/*"],
+      "@assets/*": ["assets/*"]
     },
     "strict": true,
     "strictNullChecks": true,
-    "allowSyntheticDefaultImports": true, // import React from 'react'と書ける。
+    "allowSyntheticDefaultImports": true // import React from 'react'と書ける。
   }
 }

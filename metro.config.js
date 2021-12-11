@@ -12,7 +12,8 @@ module.exports = {
   resolver: {
     extraNodeModules: {
       '@src': path.resolve(__dirname, 'src'),
-      sourceExts: ['jsx', 'js', 'ts', 'tsx', 'cjs'],
+      '@assets': path.resolve(__dirname, 'assets'),
+      sourceExts: ['jsx', 'js', 'ts', 'tsx', 'cjs', 'svg', 'png'],
     },
   },
   transformer: {

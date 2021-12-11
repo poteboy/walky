@@ -1,9 +1,5 @@
 fragment UserUnit on User {
   uid
   name
-  displayName
-  age
-  birthday
-  email
-  weight
+  phone
 }
