@@ -9,6 +9,8 @@ export const useAuth = () => {
     // authState.
     if (authState?.uid) {
       setAuthorized(true);
+    } else {
+      setAuthorized(false);
     }
   });
 

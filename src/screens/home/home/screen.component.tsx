@@ -6,7 +6,8 @@ import AppleHealthKit, {
   HealthValue,
   HealthKitPermissions,
 } from 'react-native-health';
-import {useFetchUsersQuery} from './document.gen'
+import {useFetchUsersQuery} from './document.gen';
+import auth from '@react-native-firebase/auth';
 
 /* Permission options */
 const permissions = {
@@ -39,15 +40,15 @@ AppleHealthKit.initHealthKit(permissions, (error: string) => {
 });
 
 const ScreenComponent: FC = () => {
+  const {data, loading} = useFetchUsersQuery();
 
-  const {data, loading} = useFetchUsersQuery()
+  const onSignOut = () => {
+    auth()
+      .signOut()
+      .then(() => console.log('User signed out!'));
+  };
 
-  useEffect(() => {
-
-    if(!loading)  {
-      console.log(data)
-    }
-  }, [loading])
+  console.log(data);
 
   return (
     <Wrapper>
@@ -55,11 +56,11 @@ const ScreenComponent: FC = () => {
       {data?.users?.map((user, index) => {
         return (
           <View key={index}>
-          <TestText>{user?.uid}</TestText>
-          <TestText>{user?.displayName}</TestText>
+            <TestText>{user?.name}</TestText>
           </View>
-        )
+        );
       })}
+      <Button title="ログアウト" onPress={onSignOut}></Button>
     </Wrapper>
   );
 };

@@ -1,4 +1,4 @@
-import React, {useMemo, useLayoutEffect} from 'react';
+import React, {useMemo, useEffect} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {AppDrawer} from './drawer';
 import {initialRoute} from './route';
@@ -15,9 +15,11 @@ const AuthenticationNavigator: React.FC = () => {
     return authorized ? initialRoute.DRAWER : initialRoute.AUTH;
   }, [authorized]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (authorized) {
       navigation.navigate(initialRoute.DRAWER);
+    } else {
+      navigation.navigate(initialRoute.AUTH);
     }
   }, [authorized]);
 
