@@ -8,6 +8,7 @@ import AppleHealthKit, {
 } from 'react-native-health';
 import {useFetchUsersQuery} from './document.gen';
 import auth from '@react-native-firebase/auth';
+import {useSnackBar} from '@src/hooks';
 
 /* Permission options */
 const permissions = {
@@ -40,7 +41,12 @@ AppleHealthKit.initHealthKit(permissions, (error: string) => {
 });
 
 const ScreenComponent: FC = () => {
-  const {data, loading} = useFetchUsersQuery();
+  const {data, loading} = useFetchUsersQuery({
+    onError: () => {
+      showSnack({message: 'データ取得に失敗しました'});
+    },
+  });
+  const {showSnack} = useSnackBar();
 
   const onSignOut = () => {
     auth()
