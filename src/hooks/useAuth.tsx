@@ -4,15 +4,18 @@ import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 export const useAuth = () => {
   const [authorized, setAuthorized] = useState(false);
   const [authLoading, setAuthLoading] = useState(false);
+  const [idToken, setIdToken] = useState('');
 
   auth().onAuthStateChanged(authState => {
-    // authState.
     if (authState?.uid) {
-      setAuthorized(true);
+      authState.getIdToken().then(token => {
+        setIdToken(token);
+        setAuthorized(true);
+      });
     } else {
       setAuthorized(false);
     }
   });
 
-  return {authorized, authLoading, setAuthorized};
+  return {authorized, authLoading, setAuthorized, idToken};
 };

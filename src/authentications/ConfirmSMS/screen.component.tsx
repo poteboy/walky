@@ -38,11 +38,11 @@ const ScreenCompoennt: FC = () => {
             weight: null,
           },
         }).then(() => {
-          setAuthorized(true);
-          const authNavigation = navigation.getParent();
-          if (authNavigation) {
-            authNavigation.navigate(initialRoute.DRAWER);
-          }
+          // setAuthorized(true);
+          // const authNavigation = navigation.getParent();
+          // if (authNavigation) {
+          //   authNavigation.navigate(initialRoute.DRAWER);
+          // }
         });
       })
       .catch(e => {
