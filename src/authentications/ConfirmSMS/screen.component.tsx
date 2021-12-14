@@ -32,8 +32,10 @@ const ScreenCompoennt: FC = () => {
         submit({
           variables: {
             uid: v?.user.uid as string,
-            phone: v?.user.phoneNumber ?? phone,
+            phoneNumber: v?.user.phoneNumber ?? phone,
             name: name,
+            age: null,
+            weight: null,
           },
         }).then(() => {
           setAuthorized(true);
@@ -49,7 +51,7 @@ const ScreenCompoennt: FC = () => {
   };
 
   const [authCode, setAuthCode] = useState('');
-  const [props, getCellOnLayoutHandler] = useClearByFocusCell({
+  const [onPressOut, getCellOnLayoutHandler] = useClearByFocusCell({
     value: authCode,
     setValue: setAuthCode,
   });
@@ -72,6 +74,7 @@ const ScreenCompoennt: FC = () => {
           <CodeField
             value={authCode}
             onChangeText={setAuthCode}
+            {...onPressOut}
             cellCount={6}
             rootStyle={styles.codeFieldRoot}
             ref={ref}
