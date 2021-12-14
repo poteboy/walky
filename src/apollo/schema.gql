@@ -3,13 +3,21 @@ type Query {
 }
 
 type Mutation {
-  registerUser(uid: ID!, name: String!, phone: String!): User
+  updateUser(
+    uid: ID!
+    phoneNumber: String!
+    name: String
+    age: Int
+    weight: Float
+  ): User
 }
 
 type User {
   uid: ID!
-  name: String!
-  phone: String!
+  phoneNumber: String!
+  name: String
+  age: Int
+  weight: Float
 }
 
 schema {
