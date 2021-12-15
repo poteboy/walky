@@ -6,7 +6,7 @@ import AppleHealthKit, {
   HealthValue,
   HealthKitPermissions,
 } from 'react-native-health';
-import {useFetchUsersQuery} from './document.gen';
+import {useFetchUsersQuery, useFetchUsersLazyQuery} from './document.gen';
 import auth from '@react-native-firebase/auth';
 import {useSnackBar} from '@src/hooks';
 
@@ -41,9 +41,9 @@ AppleHealthKit.initHealthKit(permissions, (error: string) => {
 });
 
 const ScreenComponent: FC = () => {
-  const {data, loading} = useFetchUsersQuery({
-    onError: () => {
-      showSnack({message: 'データ取得に失敗しました'});
+  const {data, loading, refetch} = useFetchUsersQuery({
+    onError: e => {
+      showSnack({message: e.message});
     },
   });
   const {showSnack} = useSnackBar();
@@ -54,7 +54,10 @@ const ScreenComponent: FC = () => {
       .then(() => console.log('User signed out!'));
   };
 
-  console.log(data);
+  const onRefetch = () => {
+    refetch();
+    console.log(data);
+  };
 
   return (
     <Wrapper>
@@ -67,6 +70,7 @@ const ScreenComponent: FC = () => {
         );
       })}
       <Button title="ログアウト" onPress={onSignOut}></Button>
+      <Button title="再取得" onPress={onRefetch}></Button>
     </Wrapper>
   );
 };

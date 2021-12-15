@@ -38,7 +38,7 @@ const ScreenCompoennt: FC = () => {
             weight: null,
           },
         }).then(() => {
-          // setAuthorized(true);
+          setAuthorized(true);
           // const authNavigation = navigation.getParent();
           // if (authNavigation) {
           //   authNavigation.navigate(initialRoute.DRAWER);

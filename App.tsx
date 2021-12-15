@@ -6,11 +6,11 @@ import {NativeBaseProvider} from 'native-base';
 import '@src/constants/langulage/i18n';
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
 import {urls} from '@src/constants';
-import {useApolloClient} from '@src/hooks';
+import {getApolloClient} from '@src/apollo/getApolloClient';
+
+const {client} = getApolloClient();
 
 export default function App() {
-  const {client} = useApolloClient();
-
   return (
     <ApolloProvider client={client}>
       <NativeBaseProvider>
