@@ -14,6 +14,7 @@ export const getApolloClient = () => {
   const apolloLink = setContext((_, {headers}) => {
     const tokenId = getToken();
     return {
+      ...headers,
       headers: {
         authorization: `Bearer ${tokenId}`,
       },
