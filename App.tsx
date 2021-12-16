@@ -10,6 +10,12 @@ import {getApolloClient} from '@src/apollo/getApolloClient';
 
 const {client} = getApolloClient();
 
+// const client = new ApolloClient({
+//   uri: __DEV__ ? urls.graphqlEndpoint.dev : urls.graphqlEndpoint.productions,
+//   // link: apolloLink.concat(httpLink as any),
+//   cache: new InMemoryCache(),
+// });
+
 export default function App() {
   return (
     <ApolloProvider client={client}>

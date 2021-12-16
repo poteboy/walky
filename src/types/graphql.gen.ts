@@ -23,7 +23,6 @@ export type Mutation = {
 export type MutationupdateUserArgs = {
   age: InputMaybe<Scalars['Int']>;
   name: InputMaybe<Scalars['String']>;
-  phoneNumber: Scalars['String'];
   uid: Scalars['ID'];
   weight: InputMaybe<Scalars['Float']>;
 };
@@ -134,7 +133,7 @@ export type ResolversParentTypes = {
 };
 
 export type MutationResolvers<ContextType = any, ParentType extends ResolversParentTypes['Mutation'] = ResolversParentTypes['Mutation']> = {
-  updateUser: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationupdateUserArgs, 'phoneNumber' | 'uid'>>;
+  updateUser: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<MutationupdateUserArgs, 'uid'>>;
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {

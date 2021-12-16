@@ -1,16 +1,19 @@
 import React, {FC} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {route} from './route';
+import {HomeRouteKeys, HomeParamList} from './route';
 import HomeScreenComponent from './home/screen.component';
 
-const HomeStack = createNativeStackNavigator();
+const HomeStack = createNativeStackNavigator<HomeParamList>();
 
 export const Navigator: FC = () => {
   return (
     <HomeStack.Navigator
-      initialRouteName={route.home}
+      initialRouteName={HomeRouteKeys.InitialPage}
       screenOptions={{headerShown: false}}>
-      <HomeStack.Screen name={route.home} component={HomeScreenComponent} />
+      <HomeStack.Screen
+        name={HomeRouteKeys.InitialPage}
+        component={HomeScreenComponent}
+      />
     </HomeStack.Navigator>
   );
 };
