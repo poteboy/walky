@@ -5,7 +5,9 @@ import {createHttpLink} from 'apollo-link-http';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {setContext} from '@apollo/client/link/context';
 
-const httpLink = createHttpLink();
+const httpLink = createHttpLink({
+  uri: __DEV__ ? urls.graphqlEndpoint.dev : urls.graphqlEndpoint.productions,
+});
 
 export const getApolloClient = () => {
   const getToken = async () => {
@@ -13,16 +15,22 @@ export const getApolloClient = () => {
     return token;
   };
 
-  const apolloLink = setContext(async (_, {headers}) => ({
-    headers: {
-      ...headers,
-      authorization: await getToken(),
-    },
-  }));
+  const apolloLink = setContext(async (_, {headers}) => {
+    const tokenId = await getToken();
+    return {
+      headers: {
+        authorization: `Bearer ${tokenId}`,
+      },
+    };
+  });
+
+  // const client = new ApolloClient({
+  //   link: apolloLink.concat(httpLink as any),
+  //   cache: new InMemoryCache(),
+  // });
 
   const client = new ApolloClient({
     uri: __DEV__ ? urls.graphqlEndpoint.dev : urls.graphqlEndpoint.productions,
-    // link: apolloLink.concat(httpLink as any),
     cache: new InMemoryCache(),
   });
 
