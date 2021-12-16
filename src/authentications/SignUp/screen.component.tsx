@@ -27,6 +27,7 @@ import {yupResolver} from '@hookform/resolvers/yup';
 import Spacer from '@src/components/Spacer';
 import {formatPhoneNumer} from '@src/lib';
 import {NationalCode, dialingCodes} from '@src/constants';
+import {useAuth, useSnackBar} from '@src/hooks';
 
 const ScreenCompoennt: FC = () => {
   const navigator = useAuthNavigation();
@@ -38,12 +39,17 @@ const ScreenCompoennt: FC = () => {
   const {isValid, errors} = formState;
   const [confirm, setConfirm] =
     useState<FirebaseAuthTypes.ConfirmationResult | null>(null);
+  const {showSnack} = useSnackBar();
 
   const onSendSMS = async () => {
     if (name && phone) {
       const formatedPhone = formatPhoneNumer(country, phone);
-      const confirmation = await auth().signInWithPhoneNumber(formatedPhone);
-      setConfirm(confirmation);
+      try {
+        const confirmation = await auth().signInWithPhoneNumber(formatedPhone);
+        setConfirm(confirmation);
+      } catch (e) {
+        showSnack({message: 'エラーが起きました'});
+      }
     }
   };
 

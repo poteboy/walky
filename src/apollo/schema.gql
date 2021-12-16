@@ -3,13 +3,7 @@ type Query {
 }
 
 type Mutation {
-  updateUser(
-    uid: ID!
-    phoneNumber: String!
-    name: String
-    age: Int
-    weight: Float
-  ): User
+  updateUser(uid: ID!, name: String, age: Int, weight: Float): User
 }
 
 type User {

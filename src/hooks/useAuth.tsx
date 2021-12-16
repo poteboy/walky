@@ -6,7 +6,6 @@ export const useAuth = () => {
   const [authLoading, setAuthLoading] = useState(false);
 
   auth().onAuthStateChanged(authState => {
-    // authState.
     if (authState?.uid) {
       setAuthorized(true);
     } else {

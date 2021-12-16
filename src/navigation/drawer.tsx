@@ -8,6 +8,7 @@ const Drawer = createDrawerNavigator();
 
 export const AppDrawer = () => {
   const {t} = useTranslation();
+
   return (
     <Drawer.Navigator screenOptions={{swipeEnabled: true}}>
       <Drawer.Screen name={t('home')} component={AppTab} />

@@ -16,6 +16,7 @@ import {
 import {StyleSheet} from 'react-native';
 import {colors} from '@src/constants';
 import {useRegisterUserMutation} from './document.gen';
+import auth from '@react-native-firebase/auth';
 
 const ScreenCompoennt: FC = () => {
   const route = useRoute<RouteProp<AuthParamList, 'ConfirmSMS'>>();
@@ -23,29 +24,36 @@ const ScreenCompoennt: FC = () => {
   const {setAuthorized} = useAuth();
   const {showSnack} = useSnackBar();
 
-  const {confirm, name, phone} = route.params;
+  const {confirm, name} = route.params;
 
   const onSignUp = () => {
-    route.params.confirm
+    confirm
       .confirm(authCode)
-      .then(v => {
-        submit({
-          variables: {
-            uid: v?.user.uid as string,
-            phoneNumber: v?.user.phoneNumber ?? phone,
-            name: name,
-            age: null,
-            weight: null,
-          },
-        }).then(() => {
-          setAuthorized(true);
-          const authNavigation = navigation.getParent();
-          if (authNavigation) {
-            authNavigation.navigate(initialRoute.DRAWER);
-          }
-        });
+      .then(async v => {
+        try {
+          const tokenId = await auth().currentUser?.getIdToken();
+          submit({
+            variables: {
+              uid: v?.user.uid as string,
+              name: name,
+              age: null,
+              weight: null,
+            },
+            context: {
+              headers: {
+                authorization: `Bearer ${tokenId}`,
+              },
+            },
+          }).then(() => {
+            setAuthorized(true);
+          });
+        } catch (e) {
+          console.warn(e);
+          showSnack({message: '予期せぬエラーが発生しました'});
+        }
       })
       .catch(e => {
+        console.warn(e);
         showSnack({message: '認証コードに誤りがあります'});
       });
   };
