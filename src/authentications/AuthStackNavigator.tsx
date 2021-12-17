@@ -42,7 +42,7 @@ const AuthStackNavigator: React.FC = () => {
   return (
     <AuthStack.Navigator
       initialRouteName={AuthRootKeys.Welcome}
-      screenOptions={{headerShown: true}}>
+      screenOptions={{headerShown: false}}>
       <AuthStack.Screen name={AuthRootKeys.Welcome} component={WelcomeScreen} />
       <AuthStack.Screen name={AuthRootKeys.SignUp} component={SignUpScreen} />
       <AuthStack.Screen
