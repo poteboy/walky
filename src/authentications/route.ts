@@ -1,10 +1,11 @@
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import {FirebaseAuthTypes} from '@react-native-firebase/auth';
 export const AuthRootKeys = {
   SignUp: 'SignUp',
   Welcome: 'Welcome',
   ConfirmSMS: 'ConfirmSMS',
   LogIn: 'LogIn',
+  UserInfo: 'UserInfo',
 } as const;
 
 export type AuthRootNames = keyof typeof AuthRootKeys;
@@ -14,10 +15,10 @@ export type AuthParamList = {
   [AuthRootKeys.Welcome]: undefined;
   [AuthRootKeys.ConfirmSMS]: {
     confirm: FirebaseAuthTypes.ConfirmationResult;
-    name: string;
     phone: string;
   };
   [AuthRootKeys.LogIn]: undefined;
+  [AuthRootKeys.UserInfo]: undefined;
 };
 
 export type AuthStackNavigationProps = NativeStackNavigationProp<

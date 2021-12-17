@@ -22,22 +22,32 @@ export type Mutation = {
 
 export type MutationupdateUserArgs = {
   age: InputMaybe<Scalars['Int']>;
+  icon: InputMaybe<Scalars['String']>;
   name: InputMaybe<Scalars['String']>;
   uid: Scalars['ID'];
+  userCode: InputMaybe<Scalars['String']>;
   weight: InputMaybe<Scalars['Float']>;
 };
 
 export type Query = {
   __typename?: 'Query';
+  getUser: Maybe<User>;
   users: Maybe<Array<Maybe<User>>>;
+};
+
+
+export type QuerygetUserArgs = {
+  uid: Scalars['ID'];
 };
 
 export type User = {
   __typename?: 'User';
   age: Maybe<Scalars['Int']>;
+  icon: Maybe<Scalars['String']>;
   name: Maybe<Scalars['String']>;
   phoneNumber: Scalars['String'];
   uid: Scalars['ID'];
+  userCode: Maybe<Scalars['String']>;
   weight: Maybe<Scalars['Float']>;
 };
 
@@ -137,14 +147,17 @@ export type MutationResolvers<ContextType = any, ParentType extends ResolversPar
 };
 
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+  getUser: Resolver<Maybe<ResolversTypes['User']>, ParentType, ContextType, RequireFields<QuerygetUserArgs, 'uid'>>;
   users: Resolver<Maybe<Array<Maybe<ResolversTypes['User']>>>, ParentType, ContextType>;
 };
 
 export type UserResolvers<ContextType = any, ParentType extends ResolversParentTypes['User'] = ResolversParentTypes['User']> = {
   age: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  icon: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   name: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   phoneNumber: Resolver<ResolversTypes['String'], ParentType, ContextType>;
   uid: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  userCode: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
   weight: Resolver<Maybe<ResolversTypes['Float']>, ParentType, ContextType>;
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };

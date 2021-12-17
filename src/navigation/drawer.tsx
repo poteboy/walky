@@ -1,6 +1,6 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {AppTab} from './tab';
+import {AppTab} from './tab/tab';
 import LanguageComponent from '@src/drawers/language/screen.component';
 import {useTranslation} from 'react-i18next';
 

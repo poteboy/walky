@@ -1,14 +1,44 @@
-import React, {useContext} from 'react';
+import React, {useEffect} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {AuthRootKeys, AuthParamList, AuthRootNames} from './route';
+import {AuthRootKeys, AuthParamList} from './route';
 import SignUpScreen from './SignUp/screen.component';
 import WelcomeScreen from './Welcome/screen.component';
 import ConfirmSMSScreen from './ConfirmSMS/screen.component';
-import {NavigationProps} from '@src/navigation/navigation-props';
+import UserInfoScreen from './UserInfo/screen.component';
+import {useAuth} from '@src/hooks';
+import {useAuthNavigation} from './useAuthNavigation';
+import {useUserContext} from '@src/context';
+import {
+  useFetchUserQuery,
+  useFetchUserLazyQuery,
+} from '@src/entity/user/document.gen';
 
 const AuthStack = createNativeStackNavigator<AuthParamList>();
 
 const AuthStackNavigator: React.FC = () => {
+  const navigation = useAuthNavigation();
+  const {authorized, userUid} = useAuth();
+  const [fetchUser, {data, loading}] = useFetchUserLazyQuery({
+    variables: {uid: userUid ?? ''},
+  });
+  const user = data?.getUser;
+
+  useEffect(() => {
+    if (authorized && !!user) {
+      if (user.name) {
+        navigation.getParent()?.goBack();
+      } else {
+        navigation.navigate(AuthRootKeys.UserInfo);
+      }
+    }
+  }, [authorized, user, loading]);
+
+  useEffect(() => {
+    if (userUid) {
+      fetchUser();
+    }
+  }, [userUid]);
+
   return (
     <AuthStack.Navigator
       initialRouteName={AuthRootKeys.Welcome}
@@ -18,6 +48,10 @@ const AuthStackNavigator: React.FC = () => {
       <AuthStack.Screen
         name={AuthRootKeys.ConfirmSMS}
         component={ConfirmSMSScreen}
+      />
+      <AuthStack.Screen
+        name={AuthRootKeys.UserInfo}
+        component={UserInfoScreen}
       />
     </AuthStack.Navigator>
   );

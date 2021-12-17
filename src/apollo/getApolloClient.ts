@@ -1,36 +1,25 @@
-import {ApolloClient, InMemoryCache, ApolloLink} from '@apollo/client';
-import {createUploadLink} from 'apollo-upload-client';
+import {ApolloClient, InMemoryCache} from '@apollo/client';
 import {urls} from '@src/constants';
 import {createHttpLink} from 'apollo-link-http';
-import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {setContext} from '@apollo/client/link/context';
+import {getToken} from './getToken';
 
 const httpLink = createHttpLink({
   uri: __DEV__ ? urls.graphqlEndpoint.dev : urls.graphqlEndpoint.productions,
 });
 
 export const getApolloClient = () => {
-  const getToken = async () => {
-    const token = (await auth().currentUser?.getIdToken()) ?? null;
-    return token;
-  };
-
-  const apolloLink = setContext(async (_, {headers}) => {
-    const tokenId = await getToken();
+  const apolloLink = setContext((_, {headers}) => {
     return {
+      ...headers,
       headers: {
-        authorization: `Bearer ${tokenId}`,
+        authorization: getToken(),
       },
     };
   });
 
-  // const client = new ApolloClient({
-  //   link: apolloLink.concat(httpLink as any),
-  //   cache: new InMemoryCache(),
-  // });
-
   const client = new ApolloClient({
-    uri: __DEV__ ? urls.graphqlEndpoint.dev : urls.graphqlEndpoint.productions,
+    link: apolloLink.concat(httpLink as any),
     cache: new InMemoryCache(),
   });
 

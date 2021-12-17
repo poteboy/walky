@@ -1,9 +1,17 @@
 type Query {
   users: [User]
+  getUser(uid: ID!): User
 }
 
 type Mutation {
-  updateUser(uid: ID!, name: String, age: Int, weight: Float): User
+  updateUser(
+    uid: ID!
+    name: String
+    age: Int
+    weight: Float
+    userCode: String
+    icon: String
+  ): User
 }
 
 type User {
@@ -12,6 +20,8 @@ type User {
   name: String
   age: Int
   weight: Float
+  userCode: String
+  icon: String
 }
 
 schema {

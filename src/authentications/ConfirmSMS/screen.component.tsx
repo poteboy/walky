@@ -15,41 +15,23 @@ import {
 } from 'react-native-confirmation-code-field';
 import {StyleSheet} from 'react-native';
 import {colors} from '@src/constants';
-import {useRegisterUserMutation} from './document.gen';
 import auth from '@react-native-firebase/auth';
 
 const ScreenCompoennt: FC = () => {
   const route = useRoute<RouteProp<AuthParamList, 'ConfirmSMS'>>();
   const navigation = useAuthNavigation();
-  const {setAuthorized} = useAuth();
+  const {setAuthorized, setUserUid} = useAuth();
   const {showSnack} = useSnackBar();
 
-  const {confirm, name} = route.params;
+  const {confirm} = route.params;
 
   const onSignUp = () => {
     confirm
       .confirm(authCode)
       .then(async v => {
-        try {
-          const tokenId = await auth().currentUser?.getIdToken();
-          submit({
-            variables: {
-              uid: v?.user.uid as string,
-              name: name,
-              age: null,
-              weight: null,
-            },
-            context: {
-              headers: {
-                authorization: `Bearer ${tokenId}`,
-              },
-            },
-          }).then(() => {
-            setAuthorized(true);
-          });
-        } catch (e) {
-          console.warn(e);
-          showSnack({message: '予期せぬエラーが発生しました'});
+        if (v?.user.uid) {
+          setAuthorized(true);
+          setUserUid(v?.user.uid);
         }
       })
       .catch(e => {
@@ -68,12 +50,6 @@ const ScreenCompoennt: FC = () => {
   const isValid = useMemo(() => {
     return authCode.length === 6;
   }, [authCode]);
-
-  const [submit] = useRegisterUserMutation({
-    onError(error) {
-      showSnack({message: error.message});
-    },
-  });
 
   return (
     <Layout gradient>

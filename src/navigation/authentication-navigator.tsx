@@ -5,10 +5,12 @@ import {initialRoute} from './route';
 import AuthStackNavigator from '@src/authentications/AuthStackNavigator';
 import {useAuth} from '@src/hooks';
 import {useInitialNavigation} from './useInitialNavigation';
+import {Box, Spinner} from 'native-base';
 import AppleHealthKit, {
   HealthValue,
   HealthKitPermissions,
 } from 'react-native-health';
+import {useUserContext} from '@src/context';
 
 /* Permission options */
 const permissions = {
@@ -44,18 +46,19 @@ const Authentication = createStackNavigator();
 
 const AuthenticationNavigator: React.FC = () => {
   const navigation = useInitialNavigation();
-  const {authLoading, authorized} = useAuth();
-  const initialRouteName = useMemo(() => {
-    return authorized ? initialRoute.DRAWER : initialRoute.AUTH;
-  }, [authorized]);
+  const {authorized} = useAuth();
+  const {user} = useUserContext();
 
   useEffect(() => {
-    if (authorized) {
+    if (authorized && user?.name) {
       navigation.navigate(initialRoute.DRAWER);
     } else {
       navigation.navigate(initialRoute.AUTH);
     }
-  }, [authorized]);
+  }, [authorized, user, navigation]);
+
+  const initialRouteName =
+    authorized && user?.name ? initialRoute.DRAWER : initialRoute.AUTH;
 
   return (
     <Authentication.Navigator
