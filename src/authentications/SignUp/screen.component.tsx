@@ -14,15 +14,10 @@ import styled from 'styled-components/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {useAuthNavigation} from '../useAuthNavigation';
 import {AuthRootKeys} from '../route';
-import {
-  useForm,
-  FieldValues,
-  Controller,
-  UseControllerProps,
-} from 'react-hook-form';
+import {useForm, Controller} from 'react-hook-form';
 import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import * as yup from 'yup';
-import {yunPhoneValidation, yupNameValidation} from '@src/lib/validations';
+import {yunPhoneValidation} from '@src/lib/validations';
 import {yupResolver} from '@hookform/resolvers/yup';
 import Spacer from '@src/components/Spacer';
 import {formatPhoneNumer} from '@src/lib';

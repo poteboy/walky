@@ -9,6 +9,7 @@ import AppleHealthKit, {
   HealthValue,
   HealthKitPermissions,
 } from 'react-native-health';
+import {useUserContext} from '@src/context';
 
 /* Permission options */
 const permissions = {
@@ -45,18 +46,19 @@ const Authentication = createStackNavigator();
 const AuthenticationNavigator: React.FC = () => {
   const navigation = useInitialNavigation();
   const {authorized} = useAuth();
+  const {user} = useUserContext();
 
   const initialRouteName = useMemo(() => {
     return authorized ? initialRoute.DRAWER : initialRoute.AUTH;
   }, [authorized]);
 
   useEffect(() => {
-    if (authorized) {
+    if (authorized && user?.name) {
       navigation.navigate(initialRoute.DRAWER);
     } else {
       navigation.navigate(initialRoute.AUTH);
     }
-  }, [authorized]);
+  }, [authorized, user]);
 
   return (
     <Authentication.Navigator

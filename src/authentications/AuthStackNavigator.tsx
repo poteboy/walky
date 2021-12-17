@@ -8,18 +8,20 @@ import UserInfoScreen from './UserInfo/screen.component';
 import {NavigationProps} from '@src/navigation/navigation-props';
 import {useAuth} from '@src/hooks';
 import {useAuthNavigation} from './useAuthNavigation';
+import {useUserContext} from '@src/context';
 
 const AuthStack = createNativeStackNavigator<AuthParamList>();
 
 const AuthStackNavigator: React.FC = () => {
   const navigation = useAuthNavigation();
   const {authorized, userUid} = useAuth();
+  const {user} = useUserContext();
 
-  // useEffect(() => {
-  //   if (authorized && !hasName) {
-  //     navigation.navigate(AuthRootKeys.UserInfo);
-  //   }
-  // }, [authorized, hasName]);
+  useEffect(() => {
+    if (authorized) {
+      navigation.navigate(AuthRootKeys.UserInfo);
+    }
+  }, [authorized, user]);
 
   return (
     <AuthStack.Navigator
