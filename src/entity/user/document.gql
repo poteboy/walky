@@ -4,6 +4,8 @@ fragment UserUnit on User {
   phoneNumber
   age
   weight
+  userCode
+  icon
 }
 
 query FetchUser($uid: ID!) {

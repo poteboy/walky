@@ -24,7 +24,7 @@ export const AppRoot: FC = () => {
   const user = data?.getUser;
 
   return (
-    <UserContext.Provider value={{user: user as any}}>
+    <UserContext.Provider value={{user: user ?? null}}>
       <AuthenticationNavigator />
     </UserContext.Provider>
   );
