@@ -1,8 +1,6 @@
-import {ApolloClient, InMemoryCache, ApolloLink} from '@apollo/client';
-import {createUploadLink} from 'apollo-upload-client';
+import {ApolloClient, InMemoryCache} from '@apollo/client';
 import {urls} from '@src/constants';
 import {createHttpLink} from 'apollo-link-http';
-import auth, {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import {setContext} from '@apollo/client/link/context';
 import {getToken} from './getToken';
 

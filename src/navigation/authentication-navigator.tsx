@@ -5,6 +5,7 @@ import {initialRoute} from './route';
 import AuthStackNavigator from '@src/authentications/AuthStackNavigator';
 import {useAuth} from '@src/hooks';
 import {useInitialNavigation} from './useInitialNavigation';
+import {Box, Spinner} from 'native-base';
 import AppleHealthKit, {
   HealthValue,
   HealthKitPermissions,
@@ -48,17 +49,16 @@ const AuthenticationNavigator: React.FC = () => {
   const {authorized} = useAuth();
   const {user} = useUserContext();
 
-  const initialRouteName = useMemo(() => {
-    return authorized ? initialRoute.DRAWER : initialRoute.AUTH;
-  }, [authorized]);
-
   useEffect(() => {
     if (authorized && user?.name) {
       navigation.navigate(initialRoute.DRAWER);
     } else {
       navigation.navigate(initialRoute.AUTH);
     }
-  }, [authorized, user]);
+  }, [authorized, user, navigation]);
+
+  const initialRouteName =
+    authorized && user?.name ? initialRoute.DRAWER : initialRoute.AUTH;
 
   return (
     <Authentication.Navigator

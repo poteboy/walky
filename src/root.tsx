@@ -4,10 +4,11 @@ import {retrieveTokenId} from '@src/apollo/getToken';
 import AuthenticationNavigator from '@src/navigation/authentication-navigator';
 import {UserContext} from '@src/context';
 import {useFetchUserLazyQuery} from '@src/entity/user/document.gen';
+import {Box, Spinner} from 'native-base';
 
 export const AppRoot: FC = () => {
-  const {authorized, userUid} = useAuth();
-  const [fetchUser, {data}] = useFetchUserLazyQuery({
+  const {authorized, userUid, authLoading} = useAuth();
+  const [fetchUser, {data, loading: userLoading}] = useFetchUserLazyQuery({
     variables: {uid: userUid ?? ''},
   });
 
@@ -15,16 +16,27 @@ export const AppRoot: FC = () => {
     (async () => {
       await retrieveTokenId();
     })();
-  }, [authorized]);
+  }, [authorized, userUid]);
 
   useEffect(() => {
-    fetchUser();
+    if (authorized && userUid) {
+      fetchUser();
+    }
   }, [authorized, userUid]);
 
   const user = data?.getUser;
+  const loading = userLoading || authLoading;
+
+  if (loading) {
+    return (
+      <Box alignItems="center" justifyContent="center" flex={1}>
+        <Spinner />
+      </Box>
+    );
+  }
 
   return (
-    <UserContext.Provider value={{user: user ?? null}}>
+    <UserContext.Provider value={{user: user ?? null, loading: userLoading}}>
       <AuthenticationNavigator />
     </UserContext.Provider>
   );

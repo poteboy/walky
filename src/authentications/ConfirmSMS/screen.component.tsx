@@ -32,7 +32,6 @@ const ScreenCompoennt: FC = () => {
         if (v?.user.uid) {
           setAuthorized(true);
           setUserUid(v?.user.uid);
-          navigation.navigate(AuthRootKeys.UserInfo);
         }
       })
       .catch(e => {
