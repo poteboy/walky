@@ -44,7 +44,8 @@ const Authentication = createStackNavigator();
 
 const AuthenticationNavigator: React.FC = () => {
   const navigation = useInitialNavigation();
-  const {authLoading, authorized} = useAuth();
+  const {authorized} = useAuth();
+
   const initialRouteName = useMemo(() => {
     return authorized ? initialRoute.DRAWER : initialRoute.AUTH;
   }, [authorized]);

@@ -5,3 +5,9 @@ fragment UserUnit on User {
   age
   weight
 }
+
+query FetchUser($uid: ID!) {
+  getUser(uid: $uid) {
+    ...UserUnit
+  }
+}

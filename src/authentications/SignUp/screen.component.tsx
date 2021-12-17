@@ -42,7 +42,7 @@ const ScreenCompoennt: FC = () => {
   const {showSnack} = useSnackBar();
 
   const onSendSMS = async () => {
-    if (name && phone) {
+    if (phone) {
       const formatedPhone = formatPhoneNumer(country, phone);
       try {
         const confirmation = await auth().signInWithPhoneNumber(formatedPhone);
@@ -58,12 +58,11 @@ const ScreenCompoennt: FC = () => {
       navigator.navigate(AuthRootKeys.ConfirmSMS, {
         confirm: confirm,
         phone: phone,
-        name: name,
       });
     }
   }, [confirm]);
 
-  const {name, phone} = getValues();
+  const {phone} = getValues();
 
   const [country, setCountry] = useState<NationalCode>('Japan');
 
@@ -72,26 +71,6 @@ const ScreenCompoennt: FC = () => {
       <VerticalBox>
         <Title>新規会員登録</Title>
         <FormControl>
-          <FormControl.Label>名前</FormControl.Label>
-          <Controller
-            control={control}
-            name="name"
-            render={({
-              field: {onChange, onBlur, value},
-              formState: {errors},
-            }) => (
-              <Input
-                {...control?.register('name')}
-                value={value}
-                onBlur={onBlur}
-                placeholder="名前"
-                isInvalid={!!errors.name}
-                onChangeText={values => onChange(values)}
-              />
-            )}
-          />
-          <Spacer size={10} />
-
           <Select
             selectedValue={country}
             placeholder={'国'}
@@ -122,7 +101,7 @@ const ScreenCompoennt: FC = () => {
                 value={value}
                 onBlur={onBlur}
                 placeholder="電話番号"
-                isInvalid={!!errors.name}
+                isInvalid={!!errors.phone}
                 onChangeText={values => onChange(values)}
                 keyboardType="phone-pad"
               />
@@ -155,12 +134,10 @@ const HorizontalBox = styled(HStack)`
 `;
 
 type FormValue = {
-  name: string;
   phone: string;
 };
 
 const validationSchema = yup.object().shape({
-  name: yupNameValidation,
   phone: yunPhoneValidation,
 });
 
