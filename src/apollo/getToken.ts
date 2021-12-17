@@ -7,5 +7,5 @@ export const getToken = () => tokenId;
 export const retrieveTokenId = async () => {
   const token = await auth().currentUser?.getIdToken();
   if (!token) return;
-  tokenId = token;
+  tokenId = `Bearer ${token}`;
 };
