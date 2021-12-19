@@ -1,6 +1,5 @@
-import React, {FC, memo, useCallback} from 'react';
+import React, {FC, memo, useCallback, useState} from 'react';
 import {Dimensions, TouchableOpacity} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 import Layout from '@src/components/Layout';
 import {
   VStack,
@@ -11,10 +10,11 @@ import {
   Card,
   View,
   Input,
+  Select,
 } from 'native-base';
 import styled from 'styled-components/native';
 import {AuthRootKeys} from '../route';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useSnackBar} from '@src/hooks';
 import {useAuthNavigation} from '../useAuthNavigation';
 import {colors} from '@src/constants';
 import Spacer from '@src/components/Spacer';
@@ -23,6 +23,8 @@ import {useForm, Controller, Control} from 'react-hook-form';
 import * as yup from 'yup';
 import {yunPhoneValidation} from '@src/lib/validations';
 import {yupResolver} from '@hookform/resolvers/yup';
+import {NationalCode, dialingCodes} from '@src/constants';
+import {formatPhoneNumer} from '@src/lib';
 
 const ScreenComponent: FC = () => {
   const navigation = useAuthNavigation();
@@ -36,14 +38,42 @@ const ScreenComponent: FC = () => {
     navigation.navigate(AuthRootKeys.SignUp);
   };
 
-  const onLogin = useCallback(() => {
-    navigation.navigate(AuthRootKeys.SignUp);
-  }, [navigation, control]);
+  const {phone} = getValues();
+  const {showSnack} = useSnackBar();
+  const [confirm, setConfirm] =
+    useState<FirebaseAuthTypes.ConfirmationResult | null>(null);
+
+  const onLogin = useCallback(
+    async (phone: string | null) => {
+      if (phone) {
+        const formatedPhone = formatPhoneNumer(country, phone);
+        try {
+          const confirmation = await auth().signInWithPhoneNumber(
+            formatedPhone,
+          );
+          navigation.navigate(AuthRootKeys.LogIn, {
+            confirm: confirmation,
+            phone: phone,
+          });
+        } catch (e) {
+          showSnack({message: 'エラーが起きました'});
+        }
+      }
+    },
+    [navigation, control, phone],
+  );
+
+  const [country, setCountry] = useState<NationalCode>('Japan');
 
   return (
     <Layout gradient>
       <VerticalBox>
-        <LoginCard onLogin={onLogin} control={control} />
+        <LoginCard
+          onLogin={onLogin}
+          control={control}
+          country={country}
+          setCountry={setCountry}
+        />
         <Spacer size={50} />
         <HStack justifyContent="center">
           <Boder left />
@@ -95,11 +125,15 @@ const RegisterButton = styled(Button)`
 export default ScreenComponent;
 
 type Props = {
-  onLogin: () => void;
+  onLogin: (phone: string | null) => Promise<void>;
   control: Control<FormValue, object>;
+  country: NationalCode;
+  setCountry: React.Dispatch<React.SetStateAction<NationalCode>>;
 };
 
-const LoginCard: FC<Props> = memo(({onLogin, control}) => {
+const LoginCard: FC<Props> = memo(({onLogin, control, country, setCountry}) => {
+  const [phone, setPhone] = useState<string | null>(null);
+
   return (
     <Card bg={colors.white} borderRadius={5}>
       <VStack padding={5}>
@@ -120,6 +154,24 @@ const LoginCard: FC<Props> = memo(({onLogin, control}) => {
               borderLeftRadius={5}
             />
           </LeftForm>
+          <Select
+            width={'80%'}
+            selectedValue={country}
+            placeholder={'国'}
+            onValueChange={v => setCountry(v as NationalCode)}>
+            <Select.Item
+              label={dialingCodes.Japan.country}
+              value={dialingCodes.Japan.country}
+            />
+            <Select.Item
+              label={dialingCodes.USA.country}
+              value={dialingCodes.USA.country}
+            />
+            <Select.Item
+              label={dialingCodes.Korea.country}
+              value={dialingCodes.Korea.country}
+            />
+          </Select>
         </HStack>
         <Spacer size={10} />
         <HStack borderRadius={5} bgColor={colors.Gray}>
@@ -145,7 +197,10 @@ const LoginCard: FC<Props> = memo(({onLogin, control}) => {
                 onBlur={onBlur}
                 placeholder="電話番号"
                 isInvalid={!!errors.phone}
-                onChangeText={values => onChange(values)}
+                onChangeText={values => {
+                  onChange(values);
+                  setPhone(values);
+                }}
                 keyboardType="phone-pad"
                 width="80%"
               />
@@ -153,7 +208,11 @@ const LoginCard: FC<Props> = memo(({onLogin, control}) => {
           />
         </HStack>
         <Spacer size={10} />
-        <SubmitButton color={colors.Black}>
+        <SubmitButton
+          color={colors.Black}
+          onPress={() => {
+            onLogin(phone);
+          }}>
           <Text color={colors.Black}>ログイン</Text>
         </SubmitButton>
       </VStack>
