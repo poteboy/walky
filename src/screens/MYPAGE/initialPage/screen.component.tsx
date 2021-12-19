@@ -18,7 +18,7 @@ const ScreenComponent: FC = () => {
 
   return (
     <>
-      <Header title="マイページ" />
+      <Header title="@poteboy" />
       <Layout>
         <ProfleBox user={user} />
       </Layout>
