@@ -11,6 +11,7 @@ import AppleHealthKit, {
   HealthKitPermissions,
 } from 'react-native-health';
 import {useUserContext} from '@src/context';
+import {AppTab} from '@src/navigation/tab/tab';
 
 /* Permission options */
 const permissions = {
@@ -64,7 +65,7 @@ const AuthenticationNavigator: React.FC = () => {
     <Authentication.Navigator
       screenOptions={{headerShown: false}}
       initialRouteName={initialRouteName}>
-      <Authentication.Screen name={initialRoute.DRAWER} component={AppDrawer} />
+      <Authentication.Screen name={initialRoute.DRAWER} component={AppTab} />
       <Authentication.Screen
         name={initialRoute.AUTH}
         component={AuthStackNavigator}

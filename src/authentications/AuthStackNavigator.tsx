@@ -5,6 +5,7 @@ import SignUpScreen from './SignUp/screen.component';
 import WelcomeScreen from './Welcome/screen.component';
 import ConfirmSMSScreen from './ConfirmSMS/screen.component';
 import UserInfoScreen from './UserInfo/screen.component';
+import LoginScreen from './Login/screen.component';
 import {useAuth} from '@src/hooks';
 import {useAuthNavigation} from './useAuthNavigation';
 import {useUserContext} from '@src/context';
@@ -42,9 +43,10 @@ const AuthStackNavigator: React.FC = () => {
   return (
     <AuthStack.Navigator
       initialRouteName={AuthRootKeys.Welcome}
-      screenOptions={{headerShown: true}}>
+      screenOptions={{headerShown: false}}>
       <AuthStack.Screen name={AuthRootKeys.Welcome} component={WelcomeScreen} />
       <AuthStack.Screen name={AuthRootKeys.SignUp} component={SignUpScreen} />
+      <AuthStack.Screen name={AuthRootKeys.LogIn} component={LoginScreen} />
       <AuthStack.Screen
         name={AuthRootKeys.ConfirmSMS}
         component={ConfirmSMSScreen}

@@ -17,7 +17,10 @@ export type AuthParamList = {
     confirm: FirebaseAuthTypes.ConfirmationResult;
     phone: string;
   };
-  [AuthRootKeys.LogIn]: undefined;
+  [AuthRootKeys.LogIn]: {
+    confirm: FirebaseAuthTypes.ConfirmationResult;
+    phone: string;
+  };
   [AuthRootKeys.UserInfo]: undefined;
 };
 

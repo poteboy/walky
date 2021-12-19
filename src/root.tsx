@@ -10,6 +10,7 @@ export const AppRoot: FC = () => {
   const {authorized, userUid, authLoading} = useAuth();
   const [fetchUser, {data, loading: userLoading}] = useFetchUserLazyQuery({
     variables: {uid: userUid ?? ''},
+    fetchPolicy: 'cache-first',
   });
 
   useEffect(() => {
