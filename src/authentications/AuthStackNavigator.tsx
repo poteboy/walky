@@ -25,8 +25,9 @@ const AuthStackNavigator: React.FC = () => {
   const user = data?.getUser;
 
   useEffect(() => {
-    if (authorized && !!user) {
-      if (user.name) {
+    if (authorized && user) {
+      console.log(user);
+      if (user.name && user.userCode) {
         navigation.getParent()?.goBack();
       } else {
         navigation.navigate(AuthRootKeys.UserInfo);

@@ -5,6 +5,7 @@ import {Button, View} from 'react-native';
 import {useFetchUsersQuery, useFetchUsersLazyQuery} from './document.gen';
 import auth from '@react-native-firebase/auth';
 import {useSnackBar} from '@src/hooks';
+import Spacer from '@src/components/Spacer';
 
 const ScreenComponent: FC = () => {
   const {
@@ -41,6 +42,7 @@ const ScreenComponent: FC = () => {
           </View>
         );
       })}
+      <Spacer size={30} />
       <Button title="ログアウト" onPress={onSignOut}></Button>
       <Button title="再取得" onPress={onRefetch}></Button>
     </Wrapper>

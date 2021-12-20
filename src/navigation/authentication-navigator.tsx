@@ -51,15 +51,15 @@ const AuthenticationNavigator: React.FC = () => {
   const {user} = useUserContext();
 
   useEffect(() => {
-    if (authorized && user?.name) {
+    if (authorized && user && user.name && user.userCode) {
       navigation.navigate(initialRoute.DRAWER);
-    } else {
-      navigation.navigate(initialRoute.AUTH);
     }
-  }, [authorized, user, navigation]);
+  }, [authorized, user]); //アプリ起動時のみに呼ばれるべき処理
 
   const initialRouteName =
-    authorized && user?.name ? initialRoute.DRAWER : initialRoute.AUTH;
+    authorized && user && user.name && user.userCode
+      ? initialRoute.DRAWER
+      : initialRoute.AUTH;
 
   return (
     <Authentication.Navigator

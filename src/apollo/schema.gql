@@ -10,7 +10,6 @@ type Mutation {
     age: Int
     weight: Float
     userCode: String
-    icon: String
   ): User
 }
 

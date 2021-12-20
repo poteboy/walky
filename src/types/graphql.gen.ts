@@ -22,7 +22,6 @@ export type Mutation = {
 
 export type MutationupdateUserArgs = {
   age: InputMaybe<Scalars['Int']>;
-  icon: InputMaybe<Scalars['String']>;
   name: InputMaybe<Scalars['String']>;
   uid: Scalars['ID'];
   userCode: InputMaybe<Scalars['String']>;

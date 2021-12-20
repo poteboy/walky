@@ -18,7 +18,7 @@ const ScreenComponent: FC = () => {
 
   return (
     <>
-      <Header title="@poteboy" />
+      <Header title={user.userCode!} />
       <Layout>
         <ProfleBox user={user} />
       </Layout>

@@ -33,12 +33,14 @@ const ScreenCompoennt: FC = () => {
   const {name, userCode} = getValues();
 
   const onSubmit = () => {
+    console.log(userUid, name, userCode);
     submit({
       variables: {
         uid: userUid!,
         name: name,
         weight: null,
         age: null,
+        userCode: userCode,
       },
     }).then(() => {
       navigation.getParent()?.navigate('DRAWER');

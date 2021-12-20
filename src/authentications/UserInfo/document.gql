@@ -1,5 +1,17 @@
-mutation RegisterUser($uid: ID!, $name: String, $age: Int, $weight: Float) {
-  updateUser(uid: $uid, name: $name, age: $age, weight: $weight) {
+mutation RegisterUser(
+  $uid: ID!
+  $name: String
+  $age: Int
+  $weight: Float
+  $userCode: String
+) {
+  updateUser(
+    uid: $uid
+    name: $name
+    age: $age
+    weight: $weight
+    userCode: $userCode
+  ) {
     ...UserUnit
   }
 }
