@@ -20,9 +20,10 @@ import styled from 'styled-components/native';
 
 type Props = {
   user: UserUnitFragment;
+  onNavigateFriendPage: () => void;
 };
 
-export const ProfleBox: FC<Props> = memo(({user}) => {
+export const ProfleBox: FC<Props> = memo(({user, onNavigateFriendPage}) => {
   const {isOpen, onClose, onOpen} = useDisclose();
 
   return (
@@ -50,18 +51,20 @@ export const ProfleBox: FC<Props> = memo(({user}) => {
           <Text fontSize={22} bold textAlign="right" paddingTop={5}>
             {user.name}
           </Text>
-          <FlexColumn marginY={3}>
-            <Text
-              color={colors.DarkGray}
-              textAlign="right"
-              marginRight={2}
-              alignSelf="center">
-              フレンド
-            </Text>
-            <Text fontSize={22} bold alignSelf="flex-end">
-              3
-            </Text>
-          </FlexColumn>
+          <TouchableOpacity onPress={onNavigateFriendPage}>
+            <FlexColumn marginY={3}>
+              <Text
+                color={colors.DarkGray}
+                textAlign="right"
+                marginRight={2}
+                alignSelf="center">
+                フレンド
+              </Text>
+              <Text fontSize={22} bold alignSelf="flex-end">
+                3
+              </Text>
+            </FlexColumn>
+          </TouchableOpacity>
         </VStack>
       </HStack>
       <AvatorSheet isOpen={isOpen} onClose={onClose} />

@@ -13,6 +13,7 @@ const ScreenComponent: FC = () => {
     loading,
     refetch,
   } = useFetchUsersQuery({
+    fetchPolicy: 'cache-first',
     onError: e => {
       showSnack({message: e.message});
     },
@@ -27,7 +28,6 @@ const ScreenComponent: FC = () => {
 
   const onRefetch = () => {
     refetch();
-    console.log(users);
   };
 
   return (

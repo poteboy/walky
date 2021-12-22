@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useCallback} from 'react';
 import {UserUnitFragment} from '@src/entity/user/document.gen';
 import {TouchableOpacity} from 'react-native';
 import {MyPageParamList, MyPageRouteKeys} from '../route';
@@ -16,11 +16,15 @@ const ScreenComponent: FC = () => {
   const navigation = useMyPageNavigation();
   const {user} = useTabContext();
 
+  const onNavigateFriendPage = useCallback(() => {
+    navigation.navigate('MyPage/FriendList');
+  }, [navigation]);
+
   return (
     <>
-      <Header title={user.userCode!} />
+      <Header title={'@' + user.userCode ?? ''} />
       <Layout>
-        <ProfleBox user={user} />
+        <ProfleBox user={user} onNavigateFriendPage={onNavigateFriendPage} />
       </Layout>
     </>
   );
