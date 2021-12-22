@@ -1,6 +1,6 @@
 import React, {FC, useCallback} from 'react';
 import {UserUnitFragment} from '@src/entity/user/document.gen';
-import {TouchableOpacity} from 'react-native';
+import {TouchableOpacity, ScrollView, RefreshControl} from 'react-native';
 import {MyPageParamList, MyPageRouteKeys} from '../route';
 import {useMyPageNavigation} from '../useMyPageNavigation';
 import {useRoute, RouteProp} from '@react-navigation/native';
@@ -14,7 +14,7 @@ import {ProfleBox} from './ProfileBox';
 const ScreenComponent: FC = () => {
   const route = useRoute<RouteProp<MyPageParamList, 'MyPage/InitialPage'>>();
   const navigation = useMyPageNavigation();
-  const {user} = useTabContext();
+  const {user, refetchUser, loadingUser} = useTabContext();
 
   const onNavigateFriendPage = useCallback(() => {
     navigation.navigate('MyPage/FriendList');
@@ -24,7 +24,12 @@ const ScreenComponent: FC = () => {
     <>
       <Header title={'@' + user.userCode ?? ''} />
       <Layout>
-        <ProfleBox user={user} onNavigateFriendPage={onNavigateFriendPage} />
+        <ScrollView
+          refreshControl={
+            <RefreshControl refreshing={loadingUser} onRefresh={refetchUser} />
+          }>
+          <ProfleBox user={user} onNavigateFriendPage={onNavigateFriendPage} />
+        </ScrollView>
       </Layout>
     </>
   );

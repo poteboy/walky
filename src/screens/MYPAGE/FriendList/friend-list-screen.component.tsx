@@ -9,9 +9,13 @@ const FriendListScreen: FC = () => {
   const navigation = useMyPageNavigation();
   const route = useRoute<RouteProp<MyPageParamList, 'MyPage/InitialPage'>>();
 
+  const onBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <>
-      <Header title="友達リスト" />
+      <Header title="友達リスト" onBack={onBack} />
       <Layout>
         <></>
       </Layout>

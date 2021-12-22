@@ -16,7 +16,9 @@ export const AppTab = () => {
   const {userUid} = useAuth();
 
   // ここに来る段階で確実に埋められている
-  const {data} = useFetchUserQuery({variables: {uid: userUid!}});
+  const {data, loading, refetch} = useFetchUserQuery({
+    variables: {uid: userUid!},
+  });
   const user = data?.getUser;
 
   if (!user) {
@@ -28,7 +30,8 @@ export const AppTab = () => {
   }
 
   return (
-    <TabContext.Provider value={{user: user}}>
+    <TabContext.Provider
+      value={{user: user, loadingUser: loading, refetchUser: refetch}}>
       <Tab.Navigator
         initialRouteName={TabRouteKeys.HOME}
         screenOptions={{headerShown: false}}>
