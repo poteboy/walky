@@ -1,4 +1,4 @@
-import React, {FC, memo} from 'react';
+import React, {FC, memo, useCallback, useState, useEffect} from 'react';
 import {UserUnitFragment} from '@src/entity/user/document.gen';
 import {TouchableOpacity} from 'react-native';
 import {
@@ -17,6 +17,8 @@ import {
 import Layout from '@src/components/Layout';
 import {colors} from '@src/constants';
 import styled from 'styled-components/native';
+import {launchImageLibrary, Asset} from 'react-native-image-picker';
+import {useSnackBar} from '@src/hooks';
 
 type Props = {
   user: UserUnitFragment;
@@ -24,7 +26,27 @@ type Props = {
 };
 
 export const ProfleBox: FC<Props> = memo(({user, onNavigateFriendPage}) => {
+  const {showSnack} = useSnackBar();
   const {isOpen, onClose, onOpen} = useDisclose();
+
+  const [image, setImage] = useState<Asset[] | undefined>(undefined);
+
+  const pickImage = useCallback(async () => {
+    const options = {
+      mediaType: 'photo' as any,
+      includeBase64: false,
+      maxHeight: 200,
+      maxWidth: 200,
+    };
+    launchImageLibrary(options).then(response => {
+      if (response.didCancel || response.errorCode || response.errorMessage) {
+        showSnack({message: 'エラーが起きました'});
+      } else {
+        setImage(response.assets);
+        onClose();
+      }
+    });
+  }, [setImage, onClose]);
 
   return (
     <Wrapper>
@@ -67,7 +89,7 @@ export const ProfleBox: FC<Props> = memo(({user, onNavigateFriendPage}) => {
           </TouchableOpacity>
         </VStack>
       </HStack>
-      <AvatorSheet isOpen={isOpen} onClose={onClose} />
+      <AvatorSheet isOpen={isOpen} onClose={onClose} pickImage={pickImage} />
     </Wrapper>
   );
 });
@@ -86,9 +108,10 @@ const FlexColumn = styled(View)`
 type AvatorProps = {
   isOpen: boolean;
   onClose: () => void;
+  pickImage: () => void;
 };
 
-const AvatorSheet: FC<AvatorProps> = memo(({isOpen, onClose}) => {
+const AvatorSheet: FC<AvatorProps> = memo(({isOpen, onClose, pickImage}) => {
   return (
     <Actionsheet isOpen={isOpen} onClose={onClose}>
       <Actionsheet.Content alignItems="center">
@@ -101,7 +124,7 @@ const AvatorSheet: FC<AvatorProps> = memo(({isOpen, onClose}) => {
             justifyContent: 'center',
             flex: 1,
           }}
-          onPress={console.log}>
+          onPress={pickImage}>
           ライブラリから選ぶ
         </Actionsheet.Item>
       </Actionsheet.Content>
